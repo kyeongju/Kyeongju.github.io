@@ -4,21 +4,44 @@ title: About Long Haul
 ---
 
 <div class="post">
-	<h1 class="pageTitle">About Long Haul</h1>
+	<h1 class="pageTitle">About Me</h1>
 	<img src="{{ '/assets/img/touring.jpg' | prepend: site.baseurl }}" alt="">
-	<p class="intro">Long Haul is a minimal, long form <a href="http://jekyllrb.com">Jekyll</a> Theme. It can be used as is or customized to your hearts desire.</p>
+	<p class="intro">Hello, I am Lee Kyung Joo. I am 24 years old, graduated from <a href="http://www.dongseo.ac.kr/kr/">Dongseo University</a> Computer Engineering Department and I am currently studying. I hope to be a great software developer.</p>
 	<p>Long Haul was created in honor of all the hard working touring bicycles that have traversed the globe time and time again. Take it for a spin.</p>
-	<h2>Features</h2>
+	<h2>Technology stack</h2>
 	<ul>
-		<li>Built with SASS + GULP + BROWSERSYNC + AUTOPREFIXER</li>
-  		<li>SVG Social Icons from <a href="http://customizr.net/icons/">Customizr</a></li>
-  		<li><a href="http://responsive-nav.com/">Responsive Nav Menu</a></li>
-  		<li><a href="https://github.com/snaptortoise/jekyll-rss-feeds">XML Feed for RSS Readers</a></li>
-  		<li>Contact Form via <a href="http://formspree.io/">Formspree</a></li>
-      <li>5 Post Loop with excerpt on Home Page</li>
-  		<li>Previous / Next Post Navigation</li>
-      <li>Estimated Reading Time for posts</li>
-  		<li><a href="https://github.com/adobe-webplatform/dropcap.js">Drop Cap</a> on posts</li>
-  		<li><a href="http://typecast.com/blog/a-more-modern-scale-for-web-typography">A Better Type Scale</a></li>
+		<li>Node.js</li>
+  		<li>PHP</li>
+			<li>Javascript</li>
+			<li>android</li>
+			<li>Jquery</li>
   	</ul>
+	<h2>교육이력</h2>
+		<ul>
+			<li>2016 CES 해외 현장 탐방</li>
+			<li>2017 (주)이씨스 현장실습</li>
+			<li>2018 핀란드 교환학생</li>
+		</ul>
+		<h2>자격증</h2>
+			<ul>
+				<li>OCJP자격증 (2017.03)<li>
+				<li>2종 보통 운전면허 (2016.01)</li>
+			</ul>
+			<h2>논문</h2>
+				<ul>
+					<li>최적의 여행 경로 추천 시스템 (한국 HCI학회)<li>
+					<li>위치 데이터를 활용한 그룹 안심 귀가 서비스의 구현(한국컴퓨터정보학회)</li>
+					<li>명함 관리 및 공유 시스템의 구현(한국융합신호처리학회)
+</li>
+				</ul>
+				<h2>수상이력</h2>
+					<ul>
+						<li>2015 창의아이디어 경진대회 최우수 수상</li>
+						<li>산학연관이 함께하는 부산지역 지식재산 어울림  한마당 최우수 수상</li>
+						<li>2016 DSU 창업아이디어 경진대회 최우수 수상</li>
+						<li>2016 대학생 IP창업 챌린지 캠프 장려상 수상</li>
+						<li>2017 동서대학교 상상씨앗 공모전 3등 입상</li>
+						<li>2017 DSU LINC+ FAIR 캡스톤디자인 경진대회 최우수상 수상  </li>
+						<li>2018 한국컴퓨터정보학회 우수논문상 수상</li>
+					</ul>
 </div>
