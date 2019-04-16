@@ -27,17 +27,27 @@ title: About Long Haul
 			<li>UML</li>
 			<li>Software Engineering</li>
   	</ul>
+
+		<h2>연구회 활동</h2>
+			<ul>
+				<li>동서대학교 [DN]연구회(2015~)</li>
+				<li>동서대학교 LINC 창업동아리 활동(2015~)</li>
+				<li>동서대학교 CK사업단 TA 활동(2017~)</li>
+			</ul>
+
 	<h2>교육이력</h2>
 		<ul>
 			<li>2016 CES 해외 현장 탐방</li>
 			<li>2017 (주)이씨스 현장실습</li>
 			<li>2018 핀란드 교환학생</li>
 		</ul>
+
 	<h2>자격증</h2>
 			<ul>
 				<li>OCJP자격증 (2017.03)</li>
 				<li>2종 보통 운전면허 (2016.01)</li>
 			</ul>
+
 		<h2>논문</h2>
 				<ul>
 					<li>최적의 여행 경로 추천 시스템 (한국 HCI학회)</li>
@@ -45,6 +55,7 @@ title: About Long Haul
 					<li>명함 관리 및 공유 시스템의 구현(한국융합신호처리학회)
 </li>
 			  </ul>
+
 			<h2>수상이력</h2>
 					<ul>
 						<li>2015 창의아이디어 경진대회 최우수 수상</li>
