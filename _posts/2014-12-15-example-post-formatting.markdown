@@ -2,7 +2,7 @@
 layout: post
 title:  "Project"
 date:   2019-04-16
-description: 지금까지의 프로젝트입니다.
+description: 개발했던 프로젝트입니다.
 ---
 
 Nullam quis risus eget urna mollis ornare vel eu leo. Cras mattis consectetur purus sit amet fermentum. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.
