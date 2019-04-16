@@ -1,6 +1,8 @@
 ---
 layout: post
 title:  "Introduction"
-comment: true
+date: 2019.04.00
 ---
-이름: 이경주 <hr/> 나이: 24 <hr/> 학력:  동서대학교 졸업
+### 이름: 이경주  
+### 나이: 24
+### 학력: 동서대학교 졸업
