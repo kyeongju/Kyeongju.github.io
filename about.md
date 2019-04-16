@@ -7,14 +7,25 @@ title: About Long Haul
 	<h1 class="pageTitle">About Me</h1>
 	<img src="{{ '/assets/img/touring.jpg' | prepend: site.baseurl }}" alt="">
 	<p class="intro">Hello, I am Lee Kyeongju. I am 24 years old, graduated from <a href="http://www.dongseo.ac.kr/kr/">Dongseo University</a> Computer Engineering Department and I am currently studying. I hope to be a great software developer.</p>
-	
+
+	<h2>Introduction</h2>
+	<ul>
+		<li>Name: Kyeongju Lee</li>
+  		<li>Age: 24</li>
+			<li>academic background: Dongseo University graduation<li>
+			<li>Residence: BUSAN</li>
+  	</ul>
+
 	<h2>Technology stack</h2>
 	<ul>
 		<li>Node.js</li>
   		<li>PHP</li>
-			<li>Javascript</li>
+			<li>JAVA</li>
+			<li>Javascript, Jquery, CSS, HTML</li>
 			<li>android</li>
-			<li>Jquery</li>
+			<li>C Language</li>
+			<li>UML</li>
+			<li>Software Engineering</li>
   	</ul>
 	<h2>교육이력</h2>
 		<ul>
