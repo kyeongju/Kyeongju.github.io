@@ -6,8 +6,8 @@ title: About Long Haul
 <div class="post">
 	<h1 class="pageTitle">About Me</h1>
 	<img src="{{ '/assets/img/touring.jpg' | prepend: site.baseurl }}" alt="">
-	<p class="intro">Hello, I am Lee Kyung Joo. I am 24 years old, graduated from <a href="http://www.dongseo.ac.kr/kr/">Dongseo University</a> Computer Engineering Department and I am currently studying. I hope to be a great software developer.</p>
-	<p>Long Haul was created in honor of all the hard working touring bicycles that have traversed the globe time and time again. Take it for a spin.</p>
+	<p class="intro">Hello, I am Lee Kyeongju. I am 24 years old, graduated from <a href="http://www.dongseo.ac.kr/kr/">Dongseo University</a> Computer Engineering Department and I am currently studying. I hope to be a great software developer.</p>
+	
 	<h2>Technology stack</h2>
 	<ul>
 		<li>Node.js</li>
@@ -24,12 +24,12 @@ title: About Long Haul
 		</ul>
 	<h2>자격증</h2>
 			<ul>
-				<li>OCJP자격증 (2017.03)<li>
+				<li>OCJP자격증 (2017.03)</li>
 				<li>2종 보통 운전면허 (2016.01)</li>
 			</ul>
 		<h2>논문</h2>
 				<ul>
-					<li>최적의 여행 경로 추천 시스템 (한국 HCI학회)<li>
+					<li>최적의 여행 경로 추천 시스템 (한국 HCI학회)</li>
 					<li>위치 데이터를 활용한 그룹 안심 귀가 서비스의 구현(한국컴퓨터정보학회)</li>
 					<li>명함 관리 및 공유 시스템의 구현(한국융합신호처리학회)
 </li>
