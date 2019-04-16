@@ -1,10 +1,8 @@
 ---
 layout: post
-title:  "Introduction"
-date:   2019-04-16
-description: 이름:이경주
-             나이:24
-             학력:동서대학교 졸업
+title:  "Example Post Formatting"
+date:   2014-12-15
+description: This is a post description for meta purposes. This is also the excerpt of the article that shows up on the index/home page. Change this in the post YAML.
 ---
 
 <p class="intro"><span class="dropcap">C</span>urabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Vestibulum id ligula porta felis euismod semper. Donec sed odio dui. Aenean lacinia bibendum nulla sed consectetur.</p>
