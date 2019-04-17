@@ -8,7 +8,7 @@ title: About Long Haul
 	<img src="{{ '/assets/img/touring.jpg' | prepend: site.baseurl }}" alt="">
 	<p class="intro">Hello, I am Lee Kyeongju. I am 24 years old, graduated from <a href="http://www.dongseo.ac.kr/kr/">Dongseo University</a> Computer Engineering Department and I am currently studying. I hope to be a great software developer.</p>
 
-  <p>안녕하세요 이경주입니다. 나이는 24세이고 동서대학교 컴퓨터공학부를 졸업하였습니다. 현재는 전공에 대해 공부하고 있습니다. 훌륭한 소프트웨어 개발자가 되기를 희망합니다.</p>
+  <p>안녕하세요 이경주입니다. 나이는 24세이고 동서대학교 컴퓨터공학부를 졸업하였습니다. 현재는 전공에 대해 공부하고 있습니다. 유능한 소프트웨어 개발자가 되기를 희망합니다.</p>
 
 	<h3>소개</h3>
 	<ul>
@@ -93,13 +93,23 @@ title: About Long Haul
 					        <td>
 									<figure>
 											<img src="{{ '/assets/img/smartiot.jpg' | prepend: site.baseurl }}" alt="">
-											<figcaption>DSU 창업아이디어경진대회</figcaption>
+											<caption>스마트 IOT 콘테스트</caption>
 										</figure>
 									</td>
 					    </tr>
 					    <tr>
-					        <td>내용</th>
-					        <td>내용</th>
+					        <td>
+									 <figure>
+											<img src="{{ '/assets/img/smartiot.jpg' | prepend: site.baseurl }}" alt="">
+											<caption>스마트 IOT 콘테스트</caption>
+										</figure>
+										</td>
+					        <td>
+									<figure>
+										 <img src="{{ '/assets/img/ipchangup.jpg' | prepend: site.baseurl }}" alt="">
+										 <caption>대학생 IP창업챌린지</caption>
+									 </figure>
+									</th>
 					        <td>내용</th>
 					    </tr>
 					    <tr>
