@@ -10,10 +10,10 @@ title: About Long Haul
 
 	<h2>소개</h2>
 	<ul>
-		<li>Name: Kyeongju Lee</li>
-  		<li>Age: 24</li>
-			<li>academic background: Dongseo University graduation<li>
-			<li>Residence: BUSAN</li>
+		<li>이름: 이경주</li>
+  		<li>나이: 24</li>
+			<li>학력: 동서대학교 졸업<li>
+			<li>주거지: 부산</li>
   	</ul>
 
 	<h2>전공 지식</h2>
@@ -23,9 +23,9 @@ title: About Long Haul
 			<li>JAVA</li>
 			<li>Javascript, Jquery, CSS, HTML</li>
 			<li>android</li>
-			<li>C Language</li>
+			<li>C언어</li>
 			<li>UML</li>
-			<li>Software Engineering</li>
+			<li>소프트웨어 공학</li>
   	</ul>
 
 		<h2>연구회 활동</h2>
