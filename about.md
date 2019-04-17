@@ -28,6 +28,7 @@ title: About Long Haul
 			<li>C언어</li>
 			<li>UML</li>
 			<li>소프트웨어 공학</li>
+			<li>MySQL</li>
    </ul>
 
 		<h3>연구회 활동</h3>
@@ -69,18 +70,21 @@ title: About Long Haul
 					</ul>
 
 					<table class="type11">
-					    <thead>
+					    <!-- <thead>
 					    <tr>
 					        <th scope="cols">타이틀</th>
 					        <th scope="cols">타이틀</th>
 					        <th scope="cols">타이틀</th>
 					    </tr>
-					    </thead>
+					    </thead> -->
 					    <tbody>
 					    <tr>
-					        <td>내용</th>
-					        <td>내용</th>
-					        <td>내용</th>
+					        <td><figure>
+										<img src="{{ '/assets/img/nonmun.jpg' | prepend: site.baseurl }}" alt="">
+										<figcaption>우수논문상</figcaption>
+									</figure></td>
+					        <td>내용</td>
+					        <td>내용</td>
 					    </tr>
 					    <tr>
 					        <td>내용</th>
@@ -118,6 +122,7 @@ title: About Long Haul
 			background: #eee;
 		}
 </style>
+
 					* List Item
 					* Longer List Item
 					  * Nested List Item
