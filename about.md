@@ -80,41 +80,43 @@ title: About Long Haul
 					    <tbody>
 					    <tr>
 					        <td>
-									<figure>
+
 										<img src="{{ '/assets/img/nonmun.jpg' | prepend: site.baseurl }}" alt="">
 										<figcaption>우수논문상</figcaption>
-									</figure></td>
-					        <td>
-									<figure>
-										<img src="{{ '/assets/img/check it.jpg' | prepend: site.baseurl }}" alt="">
-										<figcaption>DSU 창업아이디어경진대회</figcaption>
-									</figure>
+
 									</td>
 					        <td>
-									<figure>
-											<img src="{{ '/assets/img/smartiot.jpg' | prepend: site.baseurl }}" alt="">
-											<figcaption>스마트 IOT 콘테스트</figcaption>
-										</figure>
+
+										<img src="{{ '/assets/img/check it.jpg' | prepend: site.baseurl }}" alt="">
+										<figcaption>2016 DSU 창업아이디어경진대회</figcaption>
+
+									</td>
+					        <td>
+
+										 <img src="{{ '/assets/img/ipchangup.jpg' | prepend: site.baseurl }}" alt="">
+										 <figcaption>대학생 IP창업챌린지</figcaption>
+
 									</td>
 					    </tr>
 					    <tr>
 					        <td>
-									 <figure>
-											<img src="{{ '/assets/img/smartiot.jpg' | prepend: site.baseurl }}" alt="">
-											<figcaption>스마트 IOT 콘테스트</figcaption>
-										</figure>
+
+											<img src="{{ '/assets/img/dsuchangup.jpg' | prepend: site.baseurl }}" alt="">
+											<figcaption>2016 DSU 창업아이디어경진대회</figcaption>
+
 										</td>
 					        <td>
-									<figure>
-										 <img src="{{ '/assets/img/ipchangup.jpg' | prepend: site.baseurl }}" alt="">
-										 <figcaption>대학생 IP창업챌린지</figcaption>
-									 </figure>
+
+											<img src="{{ '/assets/img/smartiot.jpg' | prepend: site.baseurl }}" alt="">
+											<figcaption>스마트 IOT 콘테스트</figcaption>
+
 									</td>
+
 					        <td>
-									<figure>
+
 										 <img src="{{ '/assets/img/changui.jpg' | prepend: site.baseurl }}" alt="">
 										 <figcaption>창의아이디어 경진대회</figcaption>
-									 </figure>
+									 
 									 </td>
 					    </tr>
 					    <tr>
