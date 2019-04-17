@@ -54,9 +54,9 @@ title: About Long Haul
 
 		<h3>논문</h3>
 				<ul>
-					<li>최적의 여행 경로 추천 시스템 -한국 HCI학회</li>
-					<li>위치 데이터를 활용한 그룹 안심 귀가 서비스의 구현 -한국컴퓨터정보학회</li>
-					<li>명함 관리 및 공유 시스템의 구현 -한국융합신호처리학회</li>
+					<li>최적의 여행 경로 추천 시스템 -한국 HCI학회 <a href="/assets/img/HCI2018.pdf" >HCI논문</a></li>
+					<li>위치 데이터를 활용한 그룹 안심 귀가 서비스의 구현 -한국컴퓨터정보학회 <a href="/assets/img/ksci.pdf" >KSCI논문</a></li>
+					<li>명함 관리 및 공유 시스템의 구현 -한국융합신호처리학회 <a href="/assets/img/KICPS.pdf" >KICPS논문</a></li>
 			  </ul>
 
 			<h3>수상이력</h3>

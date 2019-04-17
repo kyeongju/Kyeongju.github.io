@@ -28,7 +28,7 @@ description: 누구나 쉽게 기부를 하기 위한 플리마켓 형식의 기
 </figure>
 
 <figure>
-	<img src="{{ '/assets/img/erd.png' | prepend: site.baseurl }}" alt="" style="width: 200px; height: 200px;">
+	<img src="{{ '/assets/img/erd.png' | prepend: site.baseurl }}" alt="" style="width: 300px; height: 300px;">
 	<figcaption>Fig4. - E-R Diagram</figcaption>
 </figure>
 
