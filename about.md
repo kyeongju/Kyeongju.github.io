@@ -124,7 +124,8 @@ title: About Long Haul
 									<figcaption>OCJP자격증</figcaption></td>
 					        <td><img src="{{ '/assets/img/GSW.jpg' | prepend: site.baseurl }}" alt="">
 									<figcaption>GLOBAL STARTUP WEEKEND</figcaption></td>
-					        <td>내용</td>
+					        <td><img src="{{ '/assets/img/DNAB.jpg' | prepend: site.baseurl }}" alt="">
+									<figcaption>상상씨앗 공모전</figcaption></td>
 					    </tr>
 					    </tbody>
 					</table>
@@ -153,5 +154,5 @@ title: About Long Haul
 		}
 </style>
 
-		
+
 </div>
