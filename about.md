@@ -8,7 +8,7 @@ title: About Long Haul
 	<img src="{{ '/assets/img/touring.jpg' | prepend: site.baseurl }}" alt="">
 	<p class="intro">Hello, I am Lee Kyeongju. I am 24 years old, graduated from <a href="http://www.dongseo.ac.kr/kr/">Dongseo University</a> Computer Engineering Department and I am currently studying. I hope to be a great software developer.</p>
 
-	<h2>Introduction</h2>
+	<h2>소개</h2>
 	<ul>
 		<li>Name: Kyeongju Lee</li>
   		<li>Age: 24</li>
@@ -16,7 +16,7 @@ title: About Long Haul
 			<li>Residence: BUSAN</li>
   	</ul>
 
-	<h2>Technology stack</h2>
+	<h2>전공 지식</h2>
 	<ul>
 		<li>Node.js</li>
   		<li>PHP</li>
