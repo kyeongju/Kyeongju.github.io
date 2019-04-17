@@ -8,13 +8,15 @@ title: About Long Haul
 	<img src="{{ '/assets/img/touring.jpg' | prepend: site.baseurl }}" alt="">
 	<p class="intro">Hello, I am Lee Kyeongju. I am 24 years old, graduated from <a href="http://www.dongseo.ac.kr/kr/">Dongseo University</a> Computer Engineering Department and I am currently studying. I hope to be a great software developer.</p>
 
+  안녕하세요 이경주입니다. 나이는 24세이고 동서대학교 컴퓨터공학부를 졸업하였습니다. 현재는 전공에 대해 공부하고 있습니다. 훌륭한 소프트웨어 개발자가 되기를 희망합니다.
+	
 	<h3>소개</h3>
 	<ul>
 		<li>이름: 이경주</li>
   		<li>나이: 24</li>
-			<li>학력: 동서대학교 졸업<li>
+			<li>학력: 동서대학교 졸업</li>
 			<li>주거지: 부산</li>
-  </ul>
+   </ul>
 
 	<h3>전공 지식</h3>
 	<ul>
