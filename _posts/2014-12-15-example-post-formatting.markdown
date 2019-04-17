@@ -131,7 +131,7 @@ description: 누구나 쉽게 기부를 하기 위한 플리마켓 형식의 기
 </style>
 
 <h3>관련기술 글</h3>
-<h4>MVC 패턴</h4>
+<h4 style="text-align:center">MVC 패턴</h4>
 
 <figure>
 	<img src="{{ '/assets/img/mvc.png' | prepend: site.baseurl }}" alt="" style="width: 300px; height: 300px;">
