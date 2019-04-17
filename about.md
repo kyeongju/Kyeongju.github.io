@@ -55,7 +55,7 @@ title: About Long Haul
 				<ul>
 					<li>최적의 여행 경로 추천 시스템 -한국 HCI학회</li>
 					<li>위치 데이터를 활용한 그룹 안심 귀가 서비스의 구현 -한국컴퓨터정보학회</li>
-					<li>명함 관리 및 공유 시스템의 구현 -한국융합신호처리학회)</li>
+					<li>명함 관리 및 공유 시스템의 구현 -한국융합신호처리학회</li>
 			  </ul>
 
 			<h3>수상이력</h3>
@@ -120,8 +120,10 @@ title: About Long Haul
 									 </td>
 					    </tr>
 					    <tr>
-					        <td>내용</td>
-					        <td>내용</td>
+					        <td><img src="{{ '/assets/img/ocjp.jpg' | prepend: site.baseurl }}" alt="">
+									<figcaption>OCJP자격증</figcaption></td>
+					        <td><img src="{{ '/assets/img/GSW.jpg' | prepend: site.baseurl }}" alt="">
+									<figcaption>GLOBAL STARTUP WEEKEND</figcaption></td>
 					        <td>내용</td>
 					    </tr>
 					    </tbody>
@@ -151,10 +153,5 @@ title: About Long Haul
 		}
 </style>
 
-					* List Item
-					* Longer List Item
-					  * Nested List Item
-					  * Nested Item
-					* List Item
-
+		
 </div>
