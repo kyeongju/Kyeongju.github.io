@@ -93,7 +93,7 @@ title: About Long Haul
 					        <td>
 									<figure>
 											<img src="{{ '/assets/img/smartiot.jpg' | prepend: site.baseurl }}" alt="">
-											<caption>스마트 IOT 콘테스트</caption>
+											<figcaption>스마트 IOT 콘테스트</figcaption>
 										</figure>
 									</td>
 					    </tr>
@@ -101,26 +101,26 @@ title: About Long Haul
 					        <td>
 									 <figure>
 											<img src="{{ '/assets/img/smartiot.jpg' | prepend: site.baseurl }}" alt="">
-											<caption>스마트 IOT 콘테스트</caption>
+											<figcaption>스마트 IOT 콘테스트</figcaption>
 										</figure>
 										</td>
 					        <td>
 									<figure>
 										 <img src="{{ '/assets/img/ipchangup.jpg' | prepend: site.baseurl }}" alt="">
-										 <caption>대학생 IP창업챌린지</caption>
+										 <figcaption>대학생 IP창업챌린지</figcaption>
 									 </figure>
 									</td>
 					        <td>
 									<figure>
 										 <img src="{{ '/assets/img/changui.jpg' | prepend: site.baseurl }}" alt="">
-										 <caption>창의아이디어 경진대회</caption>
+										 <figcaption>창의아이디어 경진대회</figcaption>
 									 </figure>
-									 </th>
+									 </td>
 					    </tr>
 					    <tr>
-					        <td>내용</th>
-					        <td>내용</th>
-					        <td>내용</th>
+					        <td>내용</td>
+					        <td>내용</td>
+					        <td>내용</td>
 					    </tr>
 					    </tbody>
 					</table>
