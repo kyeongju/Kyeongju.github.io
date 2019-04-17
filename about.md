@@ -5,7 +5,7 @@ title: About Long Haul
 
 <div class="post">
 	<h1 class="pageTitle">About Me</h1>
-	<img src="{{ '/assets/img/touring.jpg' | prepend: site.baseurl }}" alt="">
+	<!-- <img src="{{ '/assets/img/touring.jpg' | prepend: site.baseurl }}" alt=""> -->
 	<p class="intro">Hello, I am Lee Kyeongju. I am 24 years old, graduated from <a href="http://www.dongseo.ac.kr/kr/">Dongseo University</a> Computer Engineering Department and I am currently studying. I hope to be a great software developer.</p>
 
   <p>안녕하세요 이경주입니다. 나이는 24세이고 동서대학교 컴퓨터공학부를 졸업하였습니다. 현재는 전공에 대해 공부하고 있습니다. 유능한 소프트웨어 개발자가 되기를 희망합니다.</p>
@@ -116,7 +116,7 @@ title: About Long Haul
 
 										 <img src="{{ '/assets/img/changui.jpg' | prepend: site.baseurl }}" alt="">
 										 <figcaption>창의아이디어 경진대회</figcaption>
-									 
+
 									 </td>
 					    </tr>
 					    <tr>
