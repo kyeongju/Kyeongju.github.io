@@ -109,8 +109,13 @@ title: About Long Haul
 										 <img src="{{ '/assets/img/ipchangup.jpg' | prepend: site.baseurl }}" alt="">
 										 <caption>대학생 IP창업챌린지</caption>
 									 </figure>
-									</th>
-					        <td>내용</th>
+									</td>
+					        <td>
+									<figure>
+										 <img src="{{ '/assets/img/changui.jpg' | prepend: site.baseurl }}" alt="">
+										 <caption>창의아이디어 경진대회</caption>
+									 </figure>
+									 </th>
 					    </tr>
 					    <tr>
 					        <td>내용</th>
