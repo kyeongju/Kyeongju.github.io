@@ -138,8 +138,7 @@ description: 누구나 쉽게 기부를 하기 위한 플리마켓 형식의 기
 	<figcaption>MVC패턴</figcaption>
 </figure>
 
-
-
+-------설명적기------
 
 1. List Item
 2. Longer List Item
