@@ -28,11 +28,107 @@ description: 누구나 쉽게 기부를 하기 위한 플리마켓 형식의 기
 </figure>
 
 <figure>
-	<img src="{{ '/assets/img/erd.png' | prepend: site.baseurl }}" alt="" style="width: 200px; height: auto;">
+	<img src="{{ '/assets/img/erd.png' | prepend: site.baseurl }}" alt="" style="width: 200px; height: 200px;">
 	<figcaption>Fig4. - E-R Diagram</figcaption>
 </figure>
 
 <h3>개발 결과</h3>
+
+<table class="type11">
+    <!-- <thead>
+    <tr>
+        <th scope="cols">타이틀</th>
+        <th scope="cols">타이틀</th>
+        <th scope="cols">타이틀</th>
+    </tr>
+    </thead> -->
+    <tbody>
+    <tr>
+        <td>
+
+          <img src="{{ '/assets/img/main.png' | prepend: site.baseurl }}" alt="">
+          <figcaption>메인화면</figcaption>
+
+        </td>
+        <td>
+
+          <img src="{{ '/assets/img/marketresi.png' | prepend: site.baseurl }}" alt="">
+          <figcaption>마켓등록</figcaption>
+
+        </td>
+        <td>
+
+           <img src="{{ '/assets/img/marketmanage.png' | prepend: site.baseurl }}" alt="">
+           <figcaption>마켓관리</figcaption>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+
+          <img src="{{ '/assets/img/goodslist.png' | prepend: site.baseurl }}" alt="">
+          <figcaption>물품목록</figcaption>
+
+        </td>
+        <td>
+
+          <img src="{{ '/assets/img/goodsbuy.png' | prepend: site.baseurl }}" alt="">
+          <figcaption>물품구매</figcaption>
+
+        </td>
+        <td>
+
+           <img src="{{ '/assets/img/feedback.png' | prepend: site.baseurl }}" alt="">
+           <figcaption>피드백관리</figcaption>
+
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+
+          <img src="{{ '/assets/img/mypage1.png' | prepend: site.baseurl }}" alt="">
+          <figcaption>마이페이지</figcaption>
+
+        </td>
+        <td>
+
+          <img src="{{ '/assets/img/mypage2.png' | prepend: site.baseurl }}" alt="">
+          <figcaption>마이페이지</figcaption>
+
+        </td>
+
+    </tr>
+
+
+    </tbody>
+</table>
+
+<style>
+		table.type11 {
+			border-collapse: separate;
+			border-spacing: 1px;
+			text-align: center;
+			line-height: 1.5;
+			margin: 20px 10px;
+		}
+		table.type11 th {
+			width: 155px;
+			padding: 10px;
+			font-weight: bold;
+			vertical-align: top;
+			color: #fff;
+			/* background: #ce4869 ; */
+		}
+		table.type11 td {
+			width: 155px;
+			padding: 10px;
+			vertical-align: top;
+			border-bottom: 1px solid #ccc;
+			/* background: #eee; */
+		}
+</style>
 
 1. List Item
 2. Longer List Item

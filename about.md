@@ -16,6 +16,7 @@ title: About Long Haul
   		<li>나이: 24</li>
 			<li>학력: 동서대학교 졸업</li>
 			<li>주거지: 부산</li>
+			<li>이메일: ainimo2@gmail.com</li>
    </ul>
 
 	<h3>전공 지식</h3>
@@ -123,7 +124,7 @@ title: About Long Haul
 					        <td><img src="{{ '/assets/img/ocjp.jpg' | prepend: site.baseurl }}" alt="">
 									<figcaption>OCJP자격증</figcaption></td>
 					        <td><img src="{{ '/assets/img/GSW.jpg' | prepend: site.baseurl }}" alt="">
-									<figcaption>GLOBAL STARTUP WEEKEND</figcaption></td>
+									<figcaption>GLOBAL STARTUP WEEKEND 수료증</figcaption></td>
 					        <td><img src="{{ '/assets/img/DNAB.jpg' | prepend: site.baseurl }}" alt="">
 									<figcaption>상상씨앗 공모전</figcaption></td>
 					    </tr>
