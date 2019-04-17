@@ -79,12 +79,23 @@ title: About Long Haul
 					    </thead> -->
 					    <tbody>
 					    <tr>
-					        <td><figure>
+					        <td>
+									<figure>
 										<img src="{{ '/assets/img/nonmun.jpg' | prepend: site.baseurl }}" alt="">
 										<figcaption>우수논문상</figcaption>
 									</figure></td>
-					        <td>내용</td>
-					        <td>내용</td>
+					        <td>
+									<figure>
+										<img src="{{ '/assets/img/check it.jpg' | prepend: site.baseurl }}" alt="">
+										<figcaption>DSU 창업아이디어경진대회</figcaption>
+									</figure>
+									</td>
+					        <td>
+									<figure>
+											<img src="{{ '/assets/img/smartiot.jpg' | prepend: site.baseurl }}" alt="">
+											<figcaption>DSU 창업아이디어경진대회</figcaption>
+										</figure>
+									</td>
 					    </tr>
 					    <tr>
 					        <td>내용</th>
