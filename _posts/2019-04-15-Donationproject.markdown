@@ -70,8 +70,16 @@ description: 누구나 쉽게 기부를 하기 위한 플리마켓 형식의 기
 그림4는 물품사진, 이름, 가격, 카테고리, 수량, 물품에 대한 설명을 작성하여 물품을 등록하는 화면이다.
 그림4에서 등록한 물품들을 그림5 물품목록 화면에서 볼 수 있다.
 
+<figure>
+		<img src="{{ '/assets/img/mypage1.png'}}" alt="">
+		<figcaption>그림6.1-마이페이지</figcaption>
+</figure>
+<figure>
+		<img src="{{ '/assets/img/mypage2.png'}}" alt="">
+		<figcaption>그림6.2-마이페이지</figcaption>
+</figure>
 
-
+그림6.1,6.2는 마이페이지 화면이다. 주문내역과 포인트 이력을 확인할 수 있다.
 
 
 <!-- <table class="type11">
