@@ -256,6 +256,7 @@ description: 활동사항이 기록되어 있습니다.
   </tr>
 
 </table>
+
 <table>
 <tr>
   <td><figure>

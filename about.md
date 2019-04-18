@@ -136,8 +136,8 @@ title: About Long Haul
 
 							<td>
 
-							 <img src="{{ '/assets/img/nonmun.jpg' | prepend: site.baseurl }}" alt="">
-							 <figcaption>우수논문상</figcaption>
+							 <img src="{{ '/assets/img/capstonfair.jpg' | prepend: site.baseurl }}" alt="">
+							 <figcaption>DSU LINC+ FAIR 캡스톤디자인경진대회</figcaption>
 
 							 </td>
 
