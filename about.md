@@ -126,7 +126,7 @@ title: About Long Haul
 
 					    </tr>
 
-					    <tr>
+					   <tr>
 							<td>
 
 									<img src="{{ '/assets/img/smartiot.jpg' | prepend: site.baseurl }}" alt="">
@@ -145,7 +145,7 @@ title: About Long Haul
 
 								<img src="{{ '/assets/img/nonmun.jpg' | prepend: site.baseurl }}" alt="">
 								<figcaption>우수논문상</figcaption>
-
+							</td>
 					    </tr>
 
 							<tr>
@@ -154,7 +154,7 @@ title: About Long Haul
 
 								 <td><img src="{{ '/assets/img/ocjp.jpg' | prepend: site.baseurl }}" alt="">
 								 <figcaption>OCJP자격증</figcaption></td>
-								 
+
 
 							</tr>
 
