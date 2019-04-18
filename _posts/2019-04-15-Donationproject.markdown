@@ -9,7 +9,7 @@ description: 누구나 쉽게 기부를 하기 위한 플리마켓 형식의 기
 <h3>개발 내용</h3>
 <p>개발기간: 2017.07 ~ 2017.10 (약 3개월)</p>
 <p>개발인원: 4명</p>
-<p>담당역할: (나중에적기)를 이용한 전반적인 레이아웃 컨트롤</p>
+<p>담당역할: (나중에적기)를 이용한 전반적인 UI설계및 레이아웃 컨트롤</p>
 <p>플랫폼: Web</p>
 <p>개발언어: HTML, CSS, Javascrip, Jquery</p>
 <p>서버: Node.js</p>
@@ -17,12 +17,12 @@ description: 누구나 쉽게 기부를 하기 위한 플리마켓 형식의 기
 
 <h3>프로젝트 설계</h3>
 
-<figure>
+<!-- <figure>
 	<img src="{{ '/assets/img/concept.jpg' | prepend: site.baseurl }}" alt="">
 	<figcaption>Fig1. - Conceptual Diagram</figcaption>
-</figure>
+</figure> -->
 
-<figure>
+<!-- <figure>
 	<img src="{{ '/assets/img/UseCaseDiagram1.jpg' | prepend: site.baseurl }}" alt="">
 	<figcaption>Fig2. - UseCaseDiagram1</figcaption>
 </figure>
@@ -30,7 +30,7 @@ description: 누구나 쉽게 기부를 하기 위한 플리마켓 형식의 기
 <figure>
 	<img src="{{ '/assets/img/UseCaseDiagram2.jpg' | prepend: site.baseurl }}" alt="">
 	<figcaption>Fig3. - UseCaseDiagram2</figcaption>
-</figure>
+</figure> -->
 
 <figure>
 	<img src="{{ '/assets/img/erd.png'}}" alt="" >
@@ -40,7 +40,7 @@ description: 누구나 쉽게 기부를 하기 위한 플리마켓 형식의 기
 <h3>개발 결과</h3>
 
 <figure>
-<img src="{{ '/assets/img/main.png' | prepend: site.baseurl }}" alt="">
+<img src="{{ '/assets/img/main.png' | prepend: site.baseurl }}" alt="" style="width:600px; height:auto;">
 <figcaption>그림1-메인화면</figcaption>
 </figure>
 <figure>
@@ -79,7 +79,7 @@ description: 누구나 쉽게 기부를 하기 위한 플리마켓 형식의 기
 		<figcaption>그림6.2-마이페이지</figcaption>
 </figure>
 
-그림6.1,6.2는 마이페이지 화면이다. 주문내역과 포인트 이력을 확인할 수 있다.
+그림6.1, 6.2는 마이페이지 화면이다. 주문내역과 포인트 이력을 확인할 수 있다.
 
 
 <!-- <table class="type11">
@@ -171,13 +171,15 @@ description: 누구나 쉽게 기부를 하기 위한 플리마켓 형식의 기
 		}
 </style> -->
 
-<h3>관련기술 글</h3>
-<h4 style="text-align:center">MVC 패턴</h4>
+<h3>관련기술</h3>
+<h4 style="text-align:center">Node.js 프로미스 패턴</h4>
 
-<figure>
+
+
+<!-- <figure>
 	<img src="{{ '/assets/img/mvc.png' | prepend: site.baseurl }}" alt="" style="width: 300px; height: 300px;">
 	<figcaption>MVC패턴</figcaption>
-</figure>
+</figure> -->
 
 -------설명적기------
 
