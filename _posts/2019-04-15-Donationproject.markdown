@@ -66,28 +66,28 @@ Fig2-2는 마이페이지 클래스 다이어그램을 나타낸다. 마이페�
 </figure>
 <figure>
 	<img src="{{ '/assets/img/marketreq.png'}}" alt="" style="width:600px; height:auto;">
-	<figcaption>그림3 - 마켓승인요청</figcaption>
+	<figcaption>그림3. - 마켓승인요청</figcaption>
 </figure>
 그림2는 마켓등록 화면이다. 주최자는 플리마켓을 열기위해 로그인인을 하고 기부대상 카테고리를 정한다. 그리고 마켓에 필요한 정보들을 입력한다. 등록이 완료되면 그림3에서 승인요청을 클릭하면 관리자의 승인을 기다리고 승인이 완료되면 마켓을 진행할 수 있다.
 
 <figure>
 	<img src="{{ '/assets/img/goodsresi.png'}}" alt="" style="width:600px; height:auto;">
-	<figcaption>그림4 - 물품등록</figcaption>
+	<figcaption>그림4. - 물품등록</figcaption>
 </figure>
 <figure>
 	<img src="{{ '/assets/img/goodslist.png' | prepend: site.baseurl }}" alt="" style="width:600px; height:auto;">
-	<figcaption>그림5 - 물품목록</figcaption>
+	<figcaption>그림5. - 물품목록</figcaption>
 </figure>
 그림4는 물품사진, 이름, 가격, 카테고리, 수량, 물품에 대한 설명을 작성하여 물품을 등록하는 화면이다.
 그림4에서 등록한 물품들을 그림5 물품목록 화면에서 볼 수 있다. 화면에는 물품의 사진, 이름, 가격 그리고 판매처에 대한 정보, 기부반영 퍼센트를 볼 수 있다.
 
 <figure>
 		<img src="{{ '/assets/img/mypage1.png'}}" alt="" style="width:600px; height:auto;">
-		<figcaption>그림6-1 - 마이페이지</figcaption>
+		<figcaption>그림6-1. - 마이페이지</figcaption>
 </figure>
 <figure>
 		<img src="{{ '/assets/img/mypage2.png'}}" alt="" style="width:600px; height:auto;">
-		<figcaption>그림6-2 - 마이페이지</figcaption>
+		<figcaption>그림6-2. - 마이페이지</figcaption>
 </figure>
 
 그림6-1, 6-2는 마이페이지 화면이다. 주문내역과 포인트 이력을 확인할 수 있다.
