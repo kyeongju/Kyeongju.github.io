@@ -23,12 +23,12 @@ description: 누구나 쉽게 기부를 하기 위한 플리마켓 형식의 기
 </figure> -->
 
 <figure>
-	<img src="{{ '/assets/img/ClassDiagram1.jpg' | prepend: site.baseurl }}" alt="">
+	<img src="{{ '/assets/img/ClassDiagram1.jpg' | prepend: site.baseurl }}" alt="" style="width:600px; height:420px;">
 	<figcaption>Fig2-1. - ClassDiagram1</figcaption>
 </figure>
 
 <figure>
-	<img src="{{ '/assets/img/ClassDiagram2.jpg' | prepend: site.baseurl }}" alt="">
+	<img src="{{ '/assets/img/ClassDiagram2.jpg' | prepend: site.baseurl }}" alt="" style="width:600px; height:420px;">
 	<figcaption>Fig2-2. - ClassDiagram2</figcaption>
 </figure>
 
