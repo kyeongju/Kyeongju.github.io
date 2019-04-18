@@ -19,7 +19,6 @@ description: 누구나 쉽게 기부를 하기 위한 플리마켓 형식의 기
 
 <hr style="color:blue">
 
-
 <h3>프로젝트 설계</h3>
 
 <figure>
