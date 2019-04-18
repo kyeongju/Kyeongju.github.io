@@ -200,15 +200,3 @@ Fig2-2는 마이페이지 클래스 다이어그램을 나타낸다. 마이페�
 	<img src="{{ '/assets/img/mvc.png' | prepend: site.baseurl }}" alt="" style="width: 300px; height: 300px;">
 	<figcaption>MVC패턴</figcaption>
 </figure> -->
-
--------설명적기------
-
-1. List Item
-2. Longer List Item
-    1. Nested OL Item
-    2. Another Nested Item
-3. List Item
-
-
-
-Donec id elit non mi porta gravida at eget metus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Maecenas faucibus mollis interdum. Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam.
