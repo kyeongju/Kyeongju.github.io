@@ -12,13 +12,18 @@ description: 활동사항이 기록되어 있습니다.
     <th>Intelligence</th>
   </tr>
   <tr>
+    <td>2018.12</td>
+    <td>2018 섬김리더십 인증제</td>
+    <td>동서대학교</td>
+  </tr>
+  <tr>
     <td>2018.11</td>
     <td>2018 융합신호처리학회 추계학술대회 논문 투고</td>
     <td>한국융합신호처리학회</td>
   </tr>
   <tr>
     <td>2018.07</td>
-    <td>한국 컴퓨터정보학회 논문 투고</td>
+    <td>한국 컴퓨터정보학회 논문 투고 - 우수논문상</td>
     <td>한국컴퓨터정보학회</td>
   </tr>
   <tr>
@@ -41,7 +46,7 @@ description: 활동사항이 기록되어 있습니다.
   </tr>
   <tr>
     <td>2017.11</td>
-    <td>2017 스마트 IOT 아이디어 콘테스트</td>
+    <td>2017 스마트 IOT 아이디어 콘테스트 - 장려상</td>
     <td>부산유비쿼터스사물인터넷
 </td>
   </tr>
@@ -59,7 +64,7 @@ description: 활동사항이 기록되어 있습니다.
   </tr>
   <tr>
     <td>2017.10</td>
-    <td>상상씨앗 공모전 참여</td>
+    <td>상상씨앗 공모전 참여 - 3등입상</td>
     <td>동서대학교 공학센터
 </td>
   </tr>
@@ -77,7 +82,7 @@ description: 활동사항이 기록되어 있습니다.
   </tr>
   <tr>
     <td>2017.09</td>
-    <td>2017 대학생 제품 혁신 아이디어 경진대회 참여</td>
+    <td>2017 대학생 제품 혁신 아이디어 경진대회 참여 - 본선진출</td>
     <td>(주)코맥스
 </td>
   </tr>
@@ -88,7 +93,7 @@ description: 활동사항이 기록되어 있습니다.
   </tr>
   <tr>
     <td>2017.09</td>
-    <td>2017 DSU 창업아이디어 경진대회</td>
+    <td>2017 DSU 창업아이디어 경진대회 - 최우수상</td>
     <td>동서대학교</td>
   </tr>
   <tr>
@@ -133,7 +138,7 @@ description: 활동사항이 기록되어 있습니다.
   </tr>
   <tr>
     <td>2017.05</td>
-    <td>2017 창의아이디어 공모전 참여</td>
+    <td>2017 창의아이디어 공모전 참여 - 장려상</td>
     <td>동서대학교(CK사업단)
 </td>
   </tr>
@@ -169,7 +174,7 @@ description: 활동사항이 기록되어 있습니다.
   </tr>
   <tr>
     <td>2016.09</td>
-    <td>2016 DSU창업아이디어 경진대회 참여</td>
+    <td>2016 DSU창업아이디어 경진대회 참여 - 최우수상</td>
     <td>동서대학교</td>
   </tr>
   <tr>
@@ -179,7 +184,7 @@ description: 활동사항이 기록되어 있습니다.
   </tr>
   <tr>
     <td>2016.08</td>
-    <td>대학생 IP창업 챌린지 캠프 참여</td>
+    <td>대학생 IP창업 챌린지 캠프 참여 - 장려상</td>
     <td>부산광역시</td>
   </tr>
   <tr>
@@ -194,7 +199,7 @@ description: 활동사항이 기록되어 있습니다.
   </tr>
   <tr>
     <td>2016.05</td>
-    <td>2016 창의아이디어 공모전 참여 </td>
+    <td>2016 창의아이디어 공모전 참여 - 최우수상, 장려상</td>
     <td>동서대학교(CK사업단)</td>
   </tr>
   <tr>
@@ -219,7 +224,7 @@ description: 활동사항이 기록되어 있습니다.
   </tr>
   <tr>
     <td>2015.12</td>
-    <td>2015 산학연관이 주관하는 지식재산 어울림 한마당 참여</td>
+    <td>2015 산학연관이 주관하는 지식재산 어울림 한마당 참여 - 최우수상</td>
     <td>부산 테크노 파크
 </td>
   </tr>
@@ -241,7 +246,7 @@ description: 활동사항이 기록되어 있습니다.
   </tr>
   <tr>
     <td>2015.06</td>
-    <td>2015 창의 아이디어 공모전 참여</td>
+    <td>2015 창의 아이디어 공모전 참여 - 최우수상</td>
     <td>동서대학교(CK사업단)</td>
   </tr>
   <tr>
@@ -250,4 +255,26 @@ description: 활동사항이 기록되어 있습니다.
     <td>동서대학교(LINC사업단)</td>
   </tr>
 
+</table>
+<table>
+<tr>
+  <td><figure>
+  	<img src="{{ '/assets/img/readership.jpg' }}" alt="">
+  	<figcaption>Fig1. - 섬김리더십 인증서</figcaption>
+  </figure></td>
+  <td><figure>
+  	<img src="{{ '/assets/img/accept.jpg' }}" alt="">
+  	<figcaption>Fig2. - 오울루대학교 입학 허가서</figcaption>
+  </figure></td>
+
+</tr>
+<tr>
+<td><figure>
+<img src="{{ '/assets/img/GSW.jpg' | prepend: site.baseurl }}" alt="">
+<figcaption>Fig3. GLOBAL STARTUP WEEKEND 수료증</figure>
+</figcaption></td>
+<td><img src="{{ '/assets/img/design.jpg' }}" alt="">
+<figcaption>Fig4. - 디자인 전람회 출품확인서</figcaption>
+</figure></td>
+</tr>
 </table>

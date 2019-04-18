@@ -66,6 +66,8 @@ title: About Long Haul
 						<li>2016 DSU 창업아이디어 경진대회 - 최우수 수상</li>
 						<li>2016 대학생 IP창업 챌린지 캠프 - 장려상 수상</li>
 						<li>2017 동서대학교 상상씨앗 공모전 - 3등 입상</li>
+						<li>2017 DSU 창업아이디어 경진대회 - 최우수 수상</li>
+						<li>2017 Smart IOT 아이디어 콘테스트 - 장려상 수상</li>
 						<li>2017 DSU LINC+ FAIR 캡스톤디자인 경진대회 - 최우수상 수상</li>
 						<li>2018 한국컴퓨터정보학회 - 우수논문상 수상</li>
 					</ul>
@@ -80,54 +82,82 @@ title: About Long Haul
 					    </thead> -->
 					    <tbody>
 					    <tr>
-					        <td>
 
-										<img src="{{ '/assets/img/nonmun.jpg' | prepend: site.baseurl }}" alt="">
-										<figcaption>우수논문상</figcaption>
+							<td>
 
-									</td>
-					        <td>
+								 <img src="{{ '/assets/img/changui.jpg' | prepend: site.baseurl }}" alt="">
+								 <figcaption>창의아이디어 경진대회</figcaption>
 
-										<img src="{{ '/assets/img/check it.jpg' | prepend: site.baseurl }}" alt="">
-										<figcaption>2016 DSU 창업아이디어경진대회</figcaption>
+							 </td>
 
-									</td>
-					        <td>
+							 <td>
 
-										 <img src="{{ '/assets/img/ipchangup.jpg' | prepend: site.baseurl }}" alt="">
-										 <figcaption>대학생 IP창업챌린지</figcaption>
+									<img src="{{ '/assets/img/sanhac.jpg' | prepend: site.baseurl }}" alt="">
+									<figcaption>지식재산 어울림 한마당</figcaption>
 
-									</td>
+								</td>
+								<td>
+
+									<img src="{{ '/assets/img/check it.jpg' | prepend: site.baseurl }}" alt="">
+									<figcaption>2016 DSU 창업아이디어경진대회</figcaption>
+
+								</td>
+
+
 					    </tr>
+					   <tr>
+
+							<td>
+
+								 <img src="{{ '/assets/img/ipchangup.jpg' | prepend: site.baseurl }}" alt="">
+								 <figcaption>대학생 IP창업챌린지</figcaption>
+
+							</td>
+
+							<td><img src="{{ '/assets/img/DNAB.jpg' | prepend: site.baseurl }}" alt="">
+							<figcaption>상상씨앗 공모전</figcaption></td>
+
+					     <td>
+
+									<img src="{{ '/assets/img/dsuchangup.jpg' | prepend: site.baseurl }}" alt="">
+									<figcaption>2017 DSU 창업아이디어경진대회</figcaption>
+
+								</td>
+
+					    </tr>
+
 					    <tr>
-					        <td>
+							<td>
 
-											<img src="{{ '/assets/img/dsuchangup.jpg' | prepend: site.baseurl }}" alt="">
-											<figcaption>2016 DSU 창업아이디어경진대회</figcaption>
+									<img src="{{ '/assets/img/smartiot.jpg' | prepend: site.baseurl }}" alt="">
+									<figcaption>스마트 IOT 콘테스트</figcaption>
 
-										</td>
-					        <td>
+							</td>
 
-											<img src="{{ '/assets/img/smartiot.jpg' | prepend: site.baseurl }}" alt="">
-											<figcaption>스마트 IOT 콘테스트</figcaption>
+							<td>
 
-									</td>
+							 <img src="{{ '/assets/img/nonmun.jpg' | prepend: site.baseurl }}" alt="">
+							 <figcaption>우수논문상</figcaption>
 
-					        <td>
+							 </td>
 
-										 <img src="{{ '/assets/img/changui.jpg' | prepend: site.baseurl }}" alt="">
-										 <figcaption>창의아이디어 경진대회</figcaption>
+							 <td>
 
-									 </td>
+								<img src="{{ '/assets/img/nonmun.jpg' | prepend: site.baseurl }}" alt="">
+								<figcaption>우수논문상</figcaption>
+
 					    </tr>
-					    <tr>
-					        <td><img src="{{ '/assets/img/ocjp.jpg' | prepend: site.baseurl }}" alt="">
-									<figcaption>OCJP자격증</figcaption></td>
-					        <td><img src="{{ '/assets/img/GSW.jpg' | prepend: site.baseurl }}" alt="">
-									<figcaption>GLOBAL STARTUP WEEKEND 수료증</figcaption></td>
-					        <td><img src="{{ '/assets/img/DNAB.jpg' | prepend: site.baseurl }}" alt="">
-									<figcaption>상상씨앗 공모전</figcaption></td>
-					    </tr>
+
+							<tr>
+
+							</td>
+
+								 <td><img src="{{ '/assets/img/ocjp.jpg' | prepend: site.baseurl }}" alt="">
+								 <figcaption>OCJP자격증</figcaption></td>
+								 
+
+							</tr>
+
 					    </tbody>
 					</table>
 <style>
