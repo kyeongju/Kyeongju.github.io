@@ -24,7 +24,7 @@ description: 누구나 쉽게 기부를 하기 위한 플리마켓 형식의 기
 
 <figure>
 	<img src="{{ '/assets/img/dosystem.JPG'}}" alt="">
-	<figcaption>그림. - 시스템 구성도</figcaption>
+	<figcaption>그림1. - 시스템 구성도</figcaption>
 </figure>
 
 <figure>
