@@ -150,11 +150,8 @@ title: About Long Haul
 
 							<tr>
 
-							</td>
-
 								 <td><img src="{{ '/assets/img/ocjp.jpg' | prepend: site.baseurl }}" alt="">
 								 <figcaption>OCJP자격증</figcaption></td>
-
 
 							</tr>
 
