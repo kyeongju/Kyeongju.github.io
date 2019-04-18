@@ -24,17 +24,17 @@ description: 누구나 쉽게 기부를 하기 위한 플리마켓 형식의 기
 
 <figure>
 	<img src="{{ '/assets/img/dosystem.JPG'}}" alt="">
-	<figcaption>Fig1. - 시스템 구성도</figcaption>
+	<figcaption>그림. - 시스템 구성도</figcaption>
 </figure>
 
 <figure>
 	<img src="{{ '/assets/img/ClassDiagram1.jpg' | prepend: site.baseurl }}" alt="" style="width:600px; height:420px;">
-	<figcaption>Fig2-1. - ClassDiagram1</figcaption>
+	<figcaption>그림2-1. - ClassDiagram1</figcaption>
 </figure>
 
 <figure>
 	<img src="{{ '/assets/img/ClassDiagram2.jpg' | prepend: site.baseurl }}" alt="" style="width:600px; height:420px;">
-	<figcaption>Fig2-2. - ClassDiagram2</figcaption>
+	<figcaption>그림2-2. - ClassDiagram2</figcaption>
 </figure>
 
 <!-- Fig2-1, 2-2는 ClassDiagram을 나타낸다. Fig2-1에서 회원이 되기위해 회원정보를 입력하고 회원가입을 한다. 마켓을 등록하기 위해서는 마켓의 이름, 이미지, 시작일, 종료일, 기부대상, 기부금액이 필요하고 물품을 등록하기 위해서는 물품 이미지, 이름, 가격, 카테고리, 가격, 설명을 등록하여야한다. 물품을 식별하기 위해서 물품 번호, 카테고리 코드, 판매처 번호, 판매상태를 선택하여야한다.
@@ -43,9 +43,9 @@ Fig2-2는 마이페이지 클래스 다이어그램을 나타낸다. 마이페�
 
 <figure>
 	<img src="{{ '/assets/img/erd.png'}}" alt="" style="width:600px; height:420px;" >
-	<figcaption>Fig3. - E-R Diagram</figcaption>
+	<figcaption>그림3. - E-R Diagram</figcaption>
 </figure>
-Fig4는 ER다이어그램이다. 테이블로는 배송지, 회원_배송지, 회원, 마켓, 즐겨찾기, 기부단체, 기부대상, 주문, 포인트, 장바구니, 판매처, 피드백, 상품주문, 물품, 물품카테고리, 월별 우수회원통계로 구성되어있다. 회원이 정한 기부 대상으로 이미 진행되고 있는 마켓이 존재하면 등록이 제한된다. 마켓을 주최한 회원 역시 마켓의 판매처도 되어야 한다. 관리자의 판단에 따라 마켓의 상태는 대기, 진행, 실패가 될 수 있다. 마켓의 상태가 실패일 시 주최자는 수정을 통해 다시 마켓 등록을 신청할 수 있다. 기부금액은 판매자의 마켓 수익금 중 순수 이익을 제외한 기부 금액이 대상이다.
+그림3은 ER다이어그램이다. 테이블로는 배송지, 회원_배송지, 회원, 마켓, 즐겨찾기, 기부단체, 기부대상, 주문, 포인트, 장바구니, 판매처, 피드백, 상품주문, 물품, 물품카테고리, 월별 우수회원통계로 구성되어있다. 회원이 정한 기부 대상으로 이미 진행되고 있는 마켓이 존재하면 등록이 제한된다. 마켓을 주최한 회원 역시 마켓의 판매처도 되어야 한다. 관리자의 판단에 따라 마켓의 상태는 대기, 진행, 실패가 될 수 있다. 마켓의 상태가 실패일 시 주최자는 수정을 통해 다시 마켓 등록을 신청할 수 있다. 기부금액은 판매자의 마켓 수익금 중 순수 이익을 제외한 기부 금액이 대상이다.
 
 <hr style="color:blue">
 
@@ -183,9 +183,17 @@ Fig4는 ER다이어그램이다. 테이블로는 배송지, 회원_배송지, �
 		}
 </style> -->
 
-<h3>관련기술</h3>
-<h4 style="text-align:center">기술조사하기</h4>
+<hr style="color:blue">
 
+<h3>관련기술</h3>
+<h4 style="text-align:center">MVC패턴</h4>
+
+<figure>
+	<img src="{{ '/assets/img/mvcp.JPG'}}" alt="">
+	<figcaption>그림1. - MVC패턴</figcaption>
+</figure>
+
+그림1.은 모델-뷰-컨트롤러(Model–View–Controller, MVC)는 소프트웨어 공학에서 사용되는 소프트웨어 디자인 패턴이다. 이 패턴을 성공적으로 사용하면, 사용자 인터페이스로부터 비즈니스 로직을 분리하여 애플리케이션의 시각적 요소나 그 이면에서 실행되는 비즈니스 로직을 서로 영향 없이 쉽게 고칠 수 있는 애플리케이션을 만들 수 있다. MVC에서 모델은 애플리케이션의 정보(데이터)를 나타내며, 뷰는 텍스트, 체크박스 항목 등과 같은 사용자 인터페이스 요소를 나타내고, 컨트롤러는 데이터와 비즈니스 로직 사이의 상호동작을 관리한다. 굵은 선은 직접적인 관계를, 점선은 간접적인 관계를 나타낸다.
 
 
 <!-- <figure>
