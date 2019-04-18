@@ -269,12 +269,17 @@ description: 활동사항이 기록되어 있습니다.
 
 </tr>
 <tr>
-<td><figure>
-<img src="{{ '/assets/img/GSW.jpg' | prepend: site.baseurl }}" alt="">
-<figcaption>Fig3. GLOBAL STARTUP WEEKEND 수료증</figure>
-</figcaption></td>
-<td><img src="{{ '/assets/img/design.jpg' }}" alt="">
-<figcaption>Fig4. - 디자인 전람회 출품확인서</figcaption>
-</figure></td>
-</tr>
+     <td>
+      <figure>
+      <img src="{{ '/assets/img/GSW.jpg' | prepend: site.baseurl }}" alt="">
+      <figcaption>Fig3. GLOBAL STARTUP WEEKEND 수료증</figcaption>
+      </figure>
+      </td>
+      <td>
+      <figure>
+      <img src="{{ '/assets/img/design.jpg' }}" alt="">
+      <figcaption>Fig4. - 디자인 전람회 출품확인서</figcaption>
+      </figure>
+      </td>
+  </tr>
 </table>
