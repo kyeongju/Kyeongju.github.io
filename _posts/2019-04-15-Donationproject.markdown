@@ -13,6 +13,7 @@ description: 누구나 쉽게 기부를 하기 위한 플리마켓 형식의 기
 <p>플랫폼: Web</p>
 <p>개발언어: HTML, CSS, Javascrip, Jquery</p>
 <p>서버: Node.js</p>
+<p>DBMS: MySQL</p>
 
 <h3>프로젝트 설계</h3>
 
@@ -32,20 +33,48 @@ description: 누구나 쉽게 기부를 하기 위한 플리마켓 형식의 기
 </figure>
 
 <figure>
-	<img src="{{ '/assets/img/erd.png' | prepend: site.baseurl }}" alt="" style="width: 300px; height: 300px;">
+	<img src="{{ '/assets/img/erd.png'}}" alt="" >
 	<figcaption>Fig4. - E-R Diagram</figcaption>
 </figure>
 
 <h3>개발 결과</h3>
 
-<table class="type11">
-    <!-- <thead>
-    <tr>
-        <th scope="cols">타이틀</th>
-        <th scope="cols">타이틀</th>
-        <th scope="cols">타이틀</th>
-    </tr>
-    </thead> -->
+<figure>
+<img src="{{ '/assets/img/main.png' | prepend: site.baseurl }}" alt="">
+<figcaption>그림1-메인화면</figcaption>
+</figure>
+<figure>
+		<img src="{{ '/assets/img/goodsbuy.png' | prepend: site.baseurl }}" alt="">
+		<figcaption>그림-1.1물품구매</figcaption>
+</figure>
+그림1은 메인화면이다. 메인화면에는 기부대상에 대한 카테고리, 기부대상, 기부율을 확인할 수 있다. 구매자는 기부하고 싶은 대상을 클릭하면 해당 기부대상의 마켓 물품들을 확인하고 구매할 수 있다.그림1.1은 물품을 구매하는 화면이다.
+
+<figure>
+<img src="{{ '/assets/img/marketresi.png' | prepend: site.baseurl }}" alt="">
+<figcaption>그림2-마켓등록</figcaption>
+</figure>
+<figure>
+	<img src="{{ '/assets/img/marketreq.png'}}" alt="">
+	<figcaption>그림3-마켓승인요청</figcaption>
+</figure>
+그림2는 마켓등록 화면이다. 주최자는 플리마켓을 열기위해 로그인인을 하고 기부대상 카테고리를 정한다. 그리고 마켓에 필요한 정보들을 입력한다. 등록이 완료되면 그림3에서 승인요청을 클릭하면 관리자의 승인을 기다리고 승인이 완료되면 마켓을 진행할 수 있다.
+
+<figure>
+	<img src="{{ '/assets/img/goodsresi.png'}}" alt="">
+	<figcaption>그림4-물품등록</figcaption>
+</figure>
+<figure>
+	<img src="{{ '/assets/img/goodslist.png' | prepend: site.baseurl }}" alt="">
+	<figcaption>그림5-물품목록</figcaption>
+</figure>
+그림4는 물품사진, 이름, 가격, 카테고리, 수량, 물품에 대한 설명을 작성하여 물품을 등록하는 화면이다.
+그림4에서 등록한 물품들을 그림5 물품목록 화면에서 볼 수 있다.
+
+
+
+
+
+<!-- <table class="type11">
     <tbody>
     <tr>
         <td>
@@ -107,9 +136,9 @@ description: 누구나 쉽게 기부를 하기 위한 플리마켓 형식의 기
 
 
     </tbody>
-</table>
+</table> -->
 
-<style>
+<!-- <style>
 		table.type11 {
 			border-collapse: separate;
 			border-spacing: 1px;
@@ -132,7 +161,7 @@ description: 누구나 쉽게 기부를 하기 위한 플리마켓 형식의 기
 			border-bottom: 1px solid #ccc;
 			/* background: #eee; */
 		}
-</style>
+</style> -->
 
 <h3>관련기술 글</h3>
 <h4 style="text-align:center">MVC 패턴</h4>
