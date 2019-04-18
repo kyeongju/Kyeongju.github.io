@@ -24,17 +24,21 @@ description: 누구나 쉽게 기부를 하기 위한 플리마켓 형식의 기
 
 <figure>
 	<img src="{{ '/assets/img/ClassDiagram1.jpg' | prepend: site.baseurl }}" alt="">
-	<figcaption>Fig2. - ClassDiagram1</figcaption>
+	<figcaption>Fig2-1. - ClassDiagram1</figcaption>
 </figure>
 
-<!-- <figure>
-	<img src="{{ '/assets/img/UseCaseDiagram2.jpg' | prepend: site.baseurl }}" alt="">
-	<figcaption>Fig3. - UseCaseDiagram2</figcaption>
-</figure> -->
+<figure>
+	<img src="{{ '/assets/img/ClassDiagram2.jpg' | prepend: site.baseurl }}" alt="">
+	<figcaption>Fig2-2. - ClassDiagram2</figcaption>
+</figure>
+
+<!-- Fig2-1, 2-2는 ClassDiagram을 나타낸다. Fig2-1에서 회원이 되기위해 회원정보를 입력하고 회원가입을 한다. 마켓을 등록하기 위해서는 마켓의 이름, 이미지, 시작일, 종료일, 기부대상, 기부금액이 필요하고 물품을 등록하기 위해서는 물품 이미지, 이름, 가격, 카테고리, 가격, 설명을 등록하여야한다. 물품을 식별하기 위해서 물품 번호, 카테고리 코드, 판매처 번호, 판매상태를 선택하여야한다.
+Fig2-2는 마이페이지 클래스 다이어그램을 나타낸다. 마이페이지에서는 주문내역, 판매처관리, 포인트이력, 마켓관리를 보여준다. -->
+
 
 <figure>
 	<img src="{{ '/assets/img/erd.png'}}" alt="" style="width:600px; height:420px;" >
-	<figcaption>Fig4. - E-R Diagram</figcaption>
+	<figcaption>Fig3. - E-R Diagram</figcaption>
 </figure>
 Fig4는 ER다이어그램이다. 테이블로는 배송지, 회원_배송지, 회원, 마켓, 즐겨찾기, 기부단체, 기부대상, 주문, 포인트, 장바구니, 판매처, 피드백, 상품주문, 물품, 물품카테고리, 월별 우수회원통계로 구성되어있다. 회원이 정한 기부 대상으로 이미 진행되고 있는 마켓이 존재하면 등록이 제한된다. 마켓을 주최한 회원 역시 마켓의 판매처도 되어야 한다. 관리자의 판단에 따라 마켓의 상태는 대기, 진행, 실패가 될 수 있다. 마켓의 상태가 실패일 시 주최자는 수정을 통해 다시 마켓 등록을 신청할 수 있다. 기부금액은 판매자의 마켓 수익금 중 순수 이익을 제외한 기부 금액이 대상이다.
 
@@ -43,45 +47,45 @@ Fig4는 ER다이어그램이다. 테이블로는 배송지, 회원_배송지, �
 
 <figure>
 <img src="{{ '/assets/img/main.png' | prepend: site.baseurl }}" alt="" style="width:600px; height:auto;">
-<figcaption>그림1-메인화면</figcaption>
+<figcaption>그림1. - 메인화면</figcaption>
 </figure>
 <figure>
 		<img src="{{ '/assets/img/goodsbuy.png' | prepend: site.baseurl }}" alt="" style="width:600px; height:420px;" >
-		<figcaption>그림-1.1물품구매</figcaption>
+		<figcaption>그림1-1. - 물품구매</figcaption>
 </figure>
-그림1은 메인화면이다. 메인화면에는 기부대상에 대한 카테고리, 기부대상, 기부율을 확인할 수 있다. 구매자는 기부하고 싶은 대상을 클릭하면 해당 기부대상의 마켓 물품들을 확인하고 구매할 수 있다.그림1.1은 물품을 구매하는 화면이다.
+그림1은 메인화면이다. 메인화면에는 기부대상에 대한 카테고리, 기부대상, 기부율을 확인할 수 있다. 구매자는 기부하고 싶은 대상을 클릭하면 해당 기부대상의 마켓 물품들을 확인하고 구매할 수 있다.그림1-1은 물품을 구매하는 화면이다.
 
 <figure>
 <img src="{{ '/assets/img/marketresi.png' | prepend: site.baseurl }}" alt="" style="width:600px; height:auto;">
-<figcaption>그림2-마켓등록</figcaption>
+<figcaption>그림2. - 마켓등록</figcaption>
 </figure>
 <figure>
 	<img src="{{ '/assets/img/marketreq.png'}}" alt="" style="width:600px; height:auto;">
-	<figcaption>그림3-마켓승인요청</figcaption>
+	<figcaption>그림3 - 마켓승인요청</figcaption>
 </figure>
 그림2는 마켓등록 화면이다. 주최자는 플리마켓을 열기위해 로그인인을 하고 기부대상 카테고리를 정한다. 그리고 마켓에 필요한 정보들을 입력한다. 등록이 완료되면 그림3에서 승인요청을 클릭하면 관리자의 승인을 기다리고 승인이 완료되면 마켓을 진행할 수 있다.
 
 <figure>
 	<img src="{{ '/assets/img/goodsresi.png'}}" alt="" style="width:600px; height:auto;">
-	<figcaption>그림4-물품등록</figcaption>
+	<figcaption>그림4 - 물품등록</figcaption>
 </figure>
 <figure>
 	<img src="{{ '/assets/img/goodslist.png' | prepend: site.baseurl }}" alt="" style="width:600px; height:auto;">
-	<figcaption>그림5-물품목록</figcaption>
+	<figcaption>그림5 - 물품목록</figcaption>
 </figure>
 그림4는 물품사진, 이름, 가격, 카테고리, 수량, 물품에 대한 설명을 작성하여 물품을 등록하는 화면이다.
 그림4에서 등록한 물품들을 그림5 물품목록 화면에서 볼 수 있다. 화면에는 물품의 사진, 이름, 가격 그리고 판매처에 대한 정보, 기부반영 퍼센트를 볼 수 있다.
 
 <figure>
 		<img src="{{ '/assets/img/mypage1.png'}}" alt="" style="width:600px; height:auto;">
-		<figcaption>그림6.1-마이페이지</figcaption>
+		<figcaption>그림6-1 - 마이페이지</figcaption>
 </figure>
 <figure>
 		<img src="{{ '/assets/img/mypage2.png'}}" alt="" style="width:600px; height:auto;">
-		<figcaption>그림6.2-마이페이지</figcaption>
+		<figcaption>그림6-2 - 마이페이지</figcaption>
 </figure>
 
-그림6.1, 6.2는 마이페이지 화면이다. 주문내역과 포인트 이력을 확인할 수 있다.
+그림6-1, 6-2는 마이페이지 화면이다. 주문내역과 포인트 이력을 확인할 수 있다.
 
 
 <!-- <table class="type11">
