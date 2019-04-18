@@ -44,7 +44,7 @@ description: 누구나 쉽게 기부를 하기 위한 플리마켓 형식의 기
 <figcaption>그림1-메인화면</figcaption>
 </figure>
 <figure>
-		<img src="{{ '/assets/img/goodsbuy.png' | prepend: site.baseurl }}" alt="">
+		<img src="{{ '/assets/img/goodsbuy.png' | prepend: site.baseurl }}" alt="" style="width:600px; height:420px;" >
 		<figcaption>그림-1.1물품구매</figcaption>
 </figure>
 그림1은 메인화면이다. 메인화면에는 기부대상에 대한 카테고리, 기부대상, 기부율을 확인할 수 있다. 구매자는 기부하고 싶은 대상을 클릭하면 해당 기부대상의 마켓 물품들을 확인하고 구매할 수 있다.그림1.1은 물품을 구매하는 화면이다.
