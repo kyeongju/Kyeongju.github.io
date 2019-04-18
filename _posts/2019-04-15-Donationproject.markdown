@@ -17,10 +17,10 @@ description: 누구나 쉽게 기부를 하기 위한 플리마켓 형식의 기
 
 <h3>프로젝트 설계</h3>
 
-<!-- <figure>
-	<img src="{{ '/assets/img/concept.jpg' | prepend: site.baseurl }}" alt="">
-	<figcaption>Fig1. - Conceptual Diagram</figcaption>
-</figure> -->
+<figure>
+	<img src="{{ '/assets/img/concept.jpg'}}" alt="">
+	<figcaption>Fig1. - 시스템 구성도</figcaption>
+</figure>
 
 <figure>
 	<img src="{{ '/assets/img/ClassDiagram1.jpg' | prepend: site.baseurl }}" alt="" style="width:600px; height:420px;">
