@@ -29,18 +29,18 @@ Bahamontes lanterne rouge normandie belgium. Fred paris-nice arrivere, for omniu
 
 <h3>개발 결과</h3>
 <figure>
-	<img src="{{ '/assets/img/cardresi.png'}}" alt="">
+	<img src="{{ '/assets/img/cardresi.png'}}" alt="" style="width:600px; height:auto;">
 	<figcaption>그림1. - 명함 등록 화면</figcaption>
 </figure>
 명함등록화면에서 회사이름, 이름, 이메일, 전화번호, 주소를 입력하고 등록하면 url을 데이터베이스에 자동으로 이미지로 저장시켜준다. Fig. 3에서 ‘list’를 클릭하면 명함 목록화면으로 전환되고 ‘image’를 클릭하면 저장된 이미지를 모두 보여준다. 검색창에 검색하여 찾는 정보를 보여준다.
 
 <figure>
-	<img src="{{ '/assets/img/cardimg.png'}}" alt="">
+	<img src="{{ '/assets/img/cardimg.png'}}" alt="" style="width:600px; height:auto;">
 	<figcaption>그림2. - 명함 이미지 화면</figcaption>
 </figure>
 그림2.는 그림1.에서 등록할 때 hml2 canvas를 사용하여 지정한 영역을 캡처하고 캡처한 이미지의 src를 텍스트로 데이터베이스에 저장시켜 불러온 화면이다.
 <figure>
-	<img src="{{ '/assets/img/cardlist.png'}}" alt="">
+	<img src="{{ '/assets/img/cardlist.png'}}" alt="" style="width:600px; height:auto;">
 	<figcaption>그림3. - 명함 목록 화면</figcaption>
 </figure>
 그림3. 명함목록 화면에서는 등록했던 정보 리스트를 보여준다. ‘화사명순’, ‘이름순’, ‘등록일순’을 클릭하면 정렬하여 보여준다. ‘수정하기’ 버튼을 클릭하면 상세보기화면으로 전환되고, ‘보기’ 버튼을 클릭하면 저장된 명함의 이미지를 보여준다. “삭제하기”버튼을 클릭하면 해당 명함이 삭제된다.
