@@ -20,14 +20,14 @@ description: 하나의 아이디어(워터파크 서비스 이용 시스템)를 
 그림1은 사용자가 메인 UI에 있는 코인팔찌 등록 버튼을 누른다. 누르면 코인 팔찌 등록UI가 생성되어 바코드를 스캔 할 수 있는 화면을 보여준다. 바코드를 스캔하면 데이터베이스에서 현재 스캔한 바코드가 코인팔찌가 맞는지 확인한다. 코인팔찌 바코드 스캔이 완료되고 앱에 코인팔찌를 처음으로 등록할 경우, 예매번호 입력 팝업창을 띄워 예매번호를 입력하고 그 예매번호가 맞는 지 확인한 후 예매번호가 맞거나 두 번째 바코드를 입력할 경우, 닉네임 입력 팝업창을 띄워 닉네임을 입력한다. 입력한 닉네임이 중복인지 아닌지 확인한 후 중복이 아니라면 바코드를 등록시킨다.
 
 <figure>
-		<img src="{{ '/assets/img/코인팔찌등록.jpg'}}" alt="">
+		<img src="{{ '/assets/img/코인팔찌등록.jpg'}}" alt="" style="width:600px; height:auto;">
 		<figcaption>그림1. - 코인팔찌 등록</figcaption>
 </figure>
 
 사용자가 메인UI에 있는 대여 예약 버튼을 누른다. 누르면 실시간 물품 현황UI에서 물품의 종류, 대여 가능 상태를 볼 수 있다. 대여 가능 버튼을 누르면 대여 예약 및 결제UI에서 물품에 따른 대여 가격, 물품 위치를 확인하고 결제 수단을 선택할 수 있다. 결제가 완료되면 물품의 대여 상태는 수정된다. 그리고 코인팔찌의 잔여 금액도 수정이 된다. 대여 예약이 완료되었다는 popup이 뜨고 확인 버튼을 누르면 대여내역확인UI로 넘어간다.
 
 <figure>
-		<img src="{{ '/assets/img/대여예약.jpg'}}" alt="">
+		<img src="{{ '/assets/img/대여예약.jpg'}}" alt="" style="width:600px; height:auto;">
 		<figcaption>그림2. - 대여예약</figcaption>
 </figure>
 
@@ -35,12 +35,12 @@ description: 하나의 아이디어(워터파크 서비스 이용 시스템)를 
 그림3은 워터파크 관리 시스템, 그림4는 워터파크 앱의 화면 구성도를 보여준다.
 
 <figure>
-		<img src="{{ '/assets/img/워터파크관리시스템.png'}}" alt="">
+		<img src="{{ '/assets/img/워터파크관리시스템.png'}}" alt="" style="width:600px; height:auto;">
 		<figcaption>그림3. - 워터파크 관리 시스템</figcaption>
 </figure>
 
 <figure>
-		<img src="{{ '/assets/img/워터파크앱.png'}}" alt="">
+		<img src="{{ '/assets/img/워터파크앱.png'}}" alt="" style="width:600px; height:auto;">
 		<figcaption>그림4. - 워터파크 앱</figcaption>
 </figure>
 
