@@ -32,7 +32,7 @@ description: 하나의 아이디어(워터파크 서비스 이용 시스템)를 
 </figure>
 
 <ul>
-<li>워터파크 서비스 이용 시스템 <a href="/assets/img/D003클래스분석서.pdf" ><strong>클래스 분석서</strong></a>
+<li>워터파크 서비스 이용 시스템 <a href="/assets/img/D003클래스분석서.pdf" ><strong>클래스 분석서 pdf</strong></a>
 </li>
 </ul>
 
@@ -54,24 +54,12 @@ description: 하나의 아이디어(워터파크 서비스 이용 시스템)를 
 		<figcaption>그림5. - 워터파크 서비스 이용 시스템 화면 UI</figcaption>
 </figure>
 <ul>
-<li>워터파크 서비스 이용 시스템 <a href="/assets/img/D004UI설계서.pdf" ><strong>UI설계서 pdf</strong></a>
-</li>
+  <li>워터파크 서비스 이용 시스템 <a href="/assets/img/D004UI설계서.pdf" ><strong>UI설계서 pdf</strong></a>
+  </li>
 </ul>
-Campagnolo the hors delai de wolf as the toto turns venga venga venga, sanchez nys. Pantani hell of the north oude kwaremont nitto koppenberg, tiegemberg van steenbergen lombardie flamme rouge lemond e3 prijs vlaanderen.
-
-Planckaert berg ter stene freire gorgeous george in rouleur derby, vaughters fabianese omloop het volk rouleur play rouleur derby. Bottechia petacchi, milan-san remo van summeren off the back cutters the cassette.
-
-Nyvelocity pyrenees vande velde merckx. La fleche wallonne fixie pau, with muur hors categorie boonen aerts operacion puerto, topsport vlaanderen pereiro randonneur. This greek text is produced by rouleur derby, almost certainly the best fantasy cycling game in the world snob trousselier col du galibier, flanders venga venga venga suitcase of courage cutters kolobnev molenberg.
-## 개발인원
-<dl>
-  <dt>Coffee</dt>
-  <dd>Black hot drink</dd>
-  <dt>Milk</dt>
-  <dd>White cold drink</dd>
-</dl>
-
-* List Item
-* Longer List Item
-  * Nested List Item
-  * Nested Item
-* List Item
+<h4>데이터베이스 설계</h4>
+그림 6은 회원, 물품, 대여, 코인팔찌, 포스기-코인팔찌, 포스기, 직원 테이블로 구성되어있다.
+<figure>
+		<img src="{{ '/assets/img/디비설계.png'}}" alt="" style="width:600px; height:auto;">
+		<figcaption>그림6. - E-R 다이어그램</figcaption>
+</figure>
