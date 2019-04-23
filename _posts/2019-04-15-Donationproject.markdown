@@ -10,12 +10,12 @@ description: 누구나 쉽게 기부를 하기 위한 플리마켓 형식의 기
 
 <h3>개발 내용</h3>
 <p>개발기간: 2017.07 ~ 2017.10 (약 3개월)</p>
-<p>개발인원: 4명</p>
-<p>담당역할: 전반적인 UI설계및 레이아웃 컨트롤</p>
+<p>담당역할: 전반적인 UI설계 및 레이아웃 컨트롤</p>
 <p>플랫폼: Web</p>
 <p>개발언어: HTML, CSS, Javascrip, Jquery</p>
 <p>서버: Node.js</p>
 <p>DBMS: MySQL</p>
+<p>IDE: Atom</p>
 
 <hr style="color:blue">
 
@@ -98,7 +98,13 @@ Fig2-2는 마이페이지 클래스 다이어그램을 나타낸다. 마이페�
 		<figcaption>그림7. - 마이페이지</figcaption>
 </figure>
 
+<hr>
 
+<h3>설계문서</h3>
+프로젝트 화면UI 설계, 데이터베이스 설계, 결과화면 등 전체적인 설계문서를 확인할 수 있다.
+<ul>
+	<li><a href="/assets/img/데이터베이스설계문서.pdf" ><strong>설계문서 pdf</strong></a></li>
+</ul>
 <!-- <table class="type11">
     <tbody>
     <tr>
