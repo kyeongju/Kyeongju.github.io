@@ -63,3 +63,7 @@ description: 하나의 아이디어(워터파크 서비스 이용 시스템)를 
 		<img src="{{ '/assets/img/디비설계.png'}}" alt="" style="width:600px; height:auto;">
 		<figcaption>그림6. - E-R 다이어그램</figcaption>
 </figure>
+<ul>
+  <li>워터파크 서비스 이용 시스템 <a href="/assets/img/D005데이터베이스설계서.pdf" ><strong>데이터베이스설계서 pdf</strong></a>
+  </li>
+</ul>
