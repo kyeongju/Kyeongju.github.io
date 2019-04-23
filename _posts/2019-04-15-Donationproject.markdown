@@ -23,7 +23,7 @@ description: 누구나 쉽게 기부를 하기 위한 플리마켓 형식의 기
 <h4>시스템 개념도 & 시스템 구성도</h4>
 그림1과 그림2는 시스템 개념도와 시스템 구성도를 나타낸다. 시스템 개념도는 클라이언트와 서버 데이터베이스로 구성되어있다. 클라이언트로는 판매자, 소비자, 기부대상으로 이루어져 있으며 판매자가 상품을 판매하고 소비자가 상품을 구매하면 판매 금액의 일부가 판매자에게 전달되고 기부대상에게 기부 된다.
 <figure>
-	<img src="{{ '/assets/img/concept.jpg'}}" alt="" style="width:600px; height:auto;">
+	<img src="{{ '/assets/img/concept.jpg'}}" alt="" style="width:500px; height:auto;">
 	<figcaption>그림1. - 시스템 개념도</figcaption>
 </figure>
 
