@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "Featured Image"
+title:  "소프트웨어 분석과 설계"
 date:   2014-12-14
-image: touring.jpg
+description: 하나의 아이디어를 정하여 구현하지 않고 그에 대한 소프트웨어 분석과 설계에 대해 공부한 내용입니다.
 ---
 
 <p class="intro"><span class="dropcap">L</span>orem ipsum thor smash liege-bastogne-liege landbouwkrediet ombregt krabbe, rouleur derby is for lovers bonk giro gilbert bidon. Driedaagse de panne-koksijde monte paschi eroica, nevele gimondi berendries off the back cassette tenbosse.</p>
