@@ -11,7 +11,7 @@ description: 누구나 쉽게 기부를 하기 위한 플리마켓 형식의 기
 <h3>개발 내용</h3>
 <p>개발기간: 2017.07 ~ 2017.10 (약 3개월)</p>
 <p>개발인원: 4명</p>
-<p>담당역할: (나중에적기)를 이용한 전반적인 UI설계및 레이아웃 컨트롤</p>
+<p>담당역할: 전반적인 UI설계및 레이아웃 컨트롤</p>
 <p>플랫폼: Web</p>
 <p>개발언어: HTML, CSS, Javascrip, Jquery</p>
 <p>서버: Node.js</p>
@@ -20,25 +20,34 @@ description: 누구나 쉽게 기부를 하기 위한 플리마켓 형식의 기
 <hr style="color:blue">
 
 <h3>프로젝트 설계</h3>
+<h4>시스템 개념도 & 시스템 구성도</h4>
+그림1과 그림2는 시스템 개념도와 시스템 구성도를 나타낸다. 시스템 개념도는 클라이언트와 서버 데이터베이스로 구성되어있다. 클라이언트로는 판매자, 소비자, 기부대상으로 이루어져 있으며 판매자가 상품을 판매하고 소비자가 상품을 구매하면 판매 금액의 일부가 판매자에게 전달되고 기부대상에게 기부 된다.
+<figure>
+	<img src="{{ '/assets/img/concept.jpg'}}" alt="" style="width:600px; height:auto;">
+	<figcaption>그림1. - 시스템 개념도</figcaption>
+</figure>
 
 <figure>
 	<img src="{{ '/assets/img/dosystem.JPG'}}" alt="">
-	<figcaption>그림1. - 시스템 구성도</figcaption>
+	<figcaption>그림2. - 시스템 구성도</figcaption>
 </figure>
 
+<h4>클래스다이어그램</h4>
+그림3-1은 마켓등록 다이어그램을 나타낸다. 마켓을 등록하기 위해서는 회원만 등록할 수 있기 때문에 회원의 정보와 마켓에 필요한 정보, 물품 정보가 있어야한다. 물품목록UI에서는 등록된 물품의 정보들을 볼 수 있으며 마켓등록UI와 물품등록UI에서는 마켓의 정보와 물품의 정보가 있어야 등록이 가능하다.
 <figure>
 	<img src="{{ '/assets/img/ClassDiagram1.jpg' | prepend: site.baseurl }}" alt="" style="width:600px; height:420px;">
-	<figcaption>그림2-1. - ClassDiagram1</figcaption>
+	<figcaption>그림3-1. - 마켓등록 다이어그램</figcaption>
 </figure>
-
+그림3-2는 마이페이지 다이어그램을 나타낸다. 마이페이지에서는 구매자로 로그인하면 회원이 구매한 물품에 대한 주문내역, 포인트 이력을 조회할 수 있으며, 판매자로 로그인하면 판매처에 대한 정보, 마켓에 대한 정보를 조회할 수 있다.
 <figure>
 	<img src="{{ '/assets/img/ClassDiagram2.jpg' | prepend: site.baseurl }}" alt="" style="width:600px; height:420px;">
-	<figcaption>그림2-2. - ClassDiagram2</figcaption>
+	<figcaption>그림3-2. - 마이페이지 다이어그램</figcaption>
 </figure>
 
 <!-- Fig2-1, 2-2는 ClassDiagram을 나타낸다. Fig2-1에서 회원이 되기위해 회원정보를 입력하고 회원가입을 한다. 마켓을 등록하기 위해서는 마켓의 이름, 이미지, 시작일, 종료일, 기부대상, 기부금액이 필요하고 물품을 등록하기 위해서는 물품 이미지, 이름, 가격, 카테고리, 가격, 설명을 등록하여야한다. 물품을 식별하기 위해서 물품 번호, 카테고리 코드, 판매처 번호, 판매상태를 선택하여야한다.
 Fig2-2는 마이페이지 클래스 다이어그램을 나타낸다. 마이페이지에서는 주문내역, 판매처관리, 포인트이력, 마켓관리를 보여준다. -->
 
+<h4>데이터베이스설계</h4>
 
 <figure>
 	<img src="{{ '/assets/img/erd.png'}}" alt="" style="width:600px; height:420px;" >
