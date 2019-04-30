@@ -1,22 +1,52 @@
 ---
 layout: post
-title:  "Post With A Code Snippet"
+title:  "최적의 여행 경로 추천 시스템"
 date:   2014-12-13
+description: 목적지에 따른 최적의 경로, 목적지로 가는 방법및 교통수단 정보를 알려주는 시스템.
 ---
+최근 국내외로 여행을 하는 여행자들이 많이 늘어나고 있다. 자유여행을 가기 전 여행코스를 세우는 과정에서 일일이 위치를 검색해보거나 가까운 거리를 비교해보며 계획을 세워야 하는
+불편함과 번거로움이 있다.
+이를 해소하기 위해서 최단경로 알고리즘을 이용하여 목적지에 따른 최적의 경로, 목적지로 가는 방법 및 교통수단 정보를 알려주는 시스템을 제안한다. 이를 통하여 여행을 다녀왔던 여행객들의 추천경로나 후기 등을 공유 할 수 있다.
 
-<p class="intro"><span class="dropcap">Y</span>ou'll find this post in your `_posts` directory - edit this post and re-build (or run with the `-w` switch) to see your changes! To add new posts, simply add a file in the `_posts` directory that follows the convention: YYYY-MM-DD-name-of-post.ext.</p>
+<hr>
+<h3>프로젝트 설계</h3>
+<h4>시스템 구성도</h4>
+여행자를 위한 최단 경로 추천 시스템의 구성은
+최단여행경로 분석 및 목적지 모드 분석을 위한
+웹서버, 데이터베이스로 구성한다. 그림 1 은 여행자를 위한 최단 경로 추천 시스템 구성을 나타낸다.
+<figure>
+	<img src="{{ '/assets/img/travelsys.png'}}" alt="" style="width:500px; height:auto;">
+	<figcaption>그림1. - 시스템 구성도</figcaption>
+</figure>
 
-Jekyll also offers powerful support for code snippets:
+<hr>
+<h3>개발 내용</h3>
+사용자가 로그인을 하면 이미 여행을 다녀온 여행자가 다른 사람에게 자신이 갔던 경로나 관광지를 추천하거나 공유하고 싶을 경우 글을 게시할 수 있다. 여행을 계획하고 있던 사용자는 이미
+여행을 다녀온 여행객들의 후기를 보고 참고할 수 있다.
+<figure>
+	<img src="{{ '/assets/img/travel1.png'}}" alt="" style="width:500px; height:auto;">
+	<figcaption>그림2. - 여행 정보 공유</figcaption>
+</figure>
+사용자가 출발지와 마지막 목적지를 설정 해놓고 자신이 가고자 하는 다수의 경유지를 입력하면 출발지에서 출발하여 모든 경유지를 방문하고 마지막 목적지까지 도착하는 최적의 경로를 제공해준다. 또한 사용자는 이동 방법을 선택한다. 대중교통, 도보, 운전 등 모드 선택을 통하여 이에 맞는 최적 경로(짧은 이동거리)를 제공받는다. 제공받은 경로가 마음에 든 경우 경로를 클릭하고, 목적지까지 가는 교통수단을 선택하면 선택한 수단에 맞는 정보를 제공받을 수 있다.
+<figure>
+	<img src="{{ '/assets/img/travel2.png'}}" alt="" style="width:500px; height:auto;">
+	<figcaption>그림3. - 최단 거리 제공</figcaption>
+</figure>
+그림 4 과 같이 현재 웹 페이지를 이용해 다수의 목적지를 선택하고, 최적 경로를 제공하도록 구현하였다. 다수의 목적지를
+입력함으로써 그 모든 입력 장소에 대해 마크 표시가 되고, 여행 순서에 따라 마커 사이에 선을 표시한다.
+<figure>
+	<img src="{{ '/assets/img/여행.png'}}" alt="" style="width:500px; height:auto;">
+	<figcaption>그림4. - 여행자를 위한 최단경로 웹</figcaption>
+</figure>
 
-{% highlight ruby %}
-def print_hi(name)
-  puts "Hi, #{name}"
-end
-print_hi('Tom')
-#=> prints 'Hi, Tom' to STDOUT.
-{% endhighlight %}
-
-Check out the [Jekyll docs][jekyll] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll's GitHub repo][jekyll-gh].
-
-[jekyll-gh]: https://github.com/mojombo/jekyll
-[jekyll]:    http://jekyllrb.com
+<hr>
+<h3>관련연구</h3>
+<h4>A* 알고리즘</h4>
+A* 알고리즘은 출발 꼭짓점으로부터 목표 꼭짓점까지의 최적 경로를 탐색하기 위한 것이다. 이를 위해서는 각각의 꼭짓점에 대한 평가 함수를 정의해야 하며, 평가 함수 f(n)은 다음과 같다
+<img src="{{ '/assets/img/함수.png'}}" alt="" >
+⦁g(n): 출발 꼭짓점으로부터 꼭짓점 n 까지의 경로 가중치
+⦁h(n): 꼭짓점 n 으로부터 목표 꼭짓점까지의 추정 경로 가중치
+<h4>억지기법 (Brute-Force 알고리즘)</h4>
+억지기법은 단순하게 문제를 해결하며, 모든 경우의 수를 다 비교하여 가장 작은 비용을 사용한 경우를 선택한다. 즉(N-2)! 개의 경우를 비교하여 가장 여행 경비가 적은 쪽을 선택하는 방법이 억지 기법이다. 예를 들면 4 개의 도시 A, B, C, D, 출발도시 A, 도착도시 D 가 주어졌을 경우, 경유지의 수가 2 명으로, 억지 기법 시 D 가 주어졌을 경우, 경유지의 수가 2 임으로, 억지 기법은 2! = 2가지의 경우를 비교하여 여행 경비가 적은 경로를 문제의 해로 결정한다. 만약 도시가 5 개(A, B, C, D, E) 출발지가 A, 도착지가 E, 나머지가 경유지라고 하자
+<img src="{{ '/assets/img/억지기법.png'}}" alt="" >
+경유지의 수가 3 임으로 위와 같이 3! 가지의 경우가 생긴다. 3! 의 경우 중에서 여행 경비가 적은 쪽이 문제의 답이 된다.
