@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Figure With A Caption"
+title:  "사용자 카드 혜택 알림 시스템"
 date:   2014-12-12
 
 ---
