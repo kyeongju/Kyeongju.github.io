@@ -63,5 +63,6 @@ A* 알고리즘은 출발 꼭짓점으로부터 목표 꼭짓점까지의 최적
 <h3>기타사항</h3>
 <ul>
   	<li>2017 Smart IOT 아이디어 콘테스트 - 장려상 수상</li>
+    <img src="{{ '/assets/img/smartiot.jpg' | prepend: site.baseurl }}" alt="">
     <li>최적의 여행 경로 추천 시스템 -한국 HCI학회 <a href="/assets/img/HCI2018.pdf" ><strong>(HCI논문)</strong></a></li>
 </ul>
