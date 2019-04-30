@@ -60,3 +60,8 @@ A* 알고리즘은 출발 꼭짓점으로부터 목표 꼭짓점까지의 최적
 	<figcaption>그림6. - 억지기법</figcaption>
 </figure>
 경유지의 수가 3 임으로 위와 같이 3! 가지의 경우가 생긴다. 3! 의 경우 중에서 여행 경비가 적은 쪽이 문제의 답이 된다.
+<h3>기타사항</h3>
+<ul>
+  	<li>2017 Smart IOT 아이디어 콘테스트 - 장려상 수상</li>
+    <li>최적의 여행 경로 추천 시스템 -한국 HCI학회 <a href="/assets/img/HCI2018.pdf" ><strong>(HCI논문)</strong></a></li>
+</ul>
