@@ -10,7 +10,7 @@ description: 명함을 쉽게 공유하고 관리하는 시스템입니다.
 
 
 <h3>개발 내용</h3>
-<p>개발기간: 2018.08 ~ 2019.10 (약 2개월)</p>
+<p>개발기간: 2018.08 ~ 2018.10 (약 2개월)</p>
 <p>개발인원: 1명</p>
 <p>담당역할: 전체적인 시스템 설계 및 개발</p>
 <p>플랫폼: Web, APP</p>
@@ -20,12 +20,12 @@ description: 명함을 쉽게 공유하고 관리하는 시스템입니다.
 
 <hr style="color:blue">
 
-<h3>프로젝트 설계</h3>
+<!-- <h3>프로젝트 설계</h3>
 
 <p class="intro"><span class="dropcap">L</span>orem ipsum thor smash liege-bastogne-liege landbouwkrediet ombregt krabbe, rouleur derby is for lovers bonk giro gilbert bidon. Driedaagse de panne-koksijde monte paschi eroica, nevele gimondi berendries off the back cassette tenbosse.</p>
 
 Bahamontes lanterne rouge normandie belgium. Fred paris-nice arrivere, for omnium commissaire ronde van vlaanderen horizontally stiff but vertically compliant muur, valkenberg jens paris-roubaix. Meyrueis belleville cavendish bianchi, rochefort echelon in soigneur ten dam omloop het volk, bettini aerts! Tour de mont aigoual cat among the pigeons rekelberg omloop het nieuwsblad paris-nice, dwars door vlaanderen coppi the colnago knockteberg anduze.
-<hr>
+<hr> -->
 
 <h3>개발 결과</h3>
 <figure>
@@ -49,10 +49,15 @@ Bahamontes lanterne rouge normandie belgium. Fred paris-nice arrivere, for omniu
 	<figcaption>그림4. - NFC 공유 화면</figcaption>
 </figure>
 그림4.는 NFC태그를 통해서 명함을 전송한 화면이다. NFC태그를 휴대폰에 대면 태그에 해당되는 명함과 아이디를 화면에 보여준다. “끝내기”버튼을 클릭하면 화면이 종료된다.
+
+<ul>
+	<li><a href="/assets/img/KICPS.pdf" ><strong>KICPS 논문 pdf</strong></a></li>
+</ul>
+
 <hr>
 
 <h3>관련기술</h3>
-<h4 style="text-align:center">NFC 태그 발송 (사진을 못찾겠다,,,,)</h4>
+<h4 style="text-align:center">NFC 태그 발송 </h4>
 
 근거리 무선 통신 (NFC ™)는 전송, 교환 디지털 콘텐츠를 확인, 장치 연결을 더 편리하게 위한 연결 기술입니다.
 NFC를 사용하면 휴대폰 및 기타 모바일 장치의 지불 장치와 홈 오디오 및 비디오 장치와 같은 다른 NFC 장치간에 정보를 전송할 수 있습니다.
