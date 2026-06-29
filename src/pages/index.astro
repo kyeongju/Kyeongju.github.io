@@ -1,0 +1,119 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import { SITE, SKILLS, CERTS, EXPERIENCE } from '../config';
+
+const projects = (await getCollection('projects')).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+const docs = (await getCollection('architecture')).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+---
+
+<Base>
+  <section class="hero">
+    <h1>{SITE.title}</h1>
+    <p class="tagline">{SITE.tagline}</p>
+    <div class="badges chips">
+      <span class="chip">AWS SA Professional</span>
+      <span class="chip">Kubernetes · EKS</span>
+      <span class="chip">Terraform · GitOps</span>
+      <span class="chip">AIOps · LLM</span>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>About</h2>
+    <p class="about-text">{SITE.about}</p>
+  </section>
+
+  <section id="experience">
+    <h2>Experience</h2>
+    <ol class="timeline">
+      {
+        EXPERIENCE.map((e) => (
+          <li class="exp">
+            <div class="exp-period">{e.period}</div>
+            <div class="exp-body">
+              <div class="exp-head">
+                <span class="exp-org">{e.org}</span>
+                <span class="exp-role">{e.role}</span>
+              </div>
+              <p class="exp-desc">{e.desc}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skills-grid">
+      {
+        SKILLS.map((g) => (
+          <div class="skill-group">
+            <div class="label">
+              {g.group}
+              <span class={`skill-level ${g.level}`}>{g.level === 'expert' ? 'Expert' : 'Proficient'}</span>
+            </div>
+            <div class="chips">
+              {g.items.map((i) => <span class="chip">{i}</span>)}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section id="certs">
+    <h2>Certifications</h2>
+    <ul class="cert-list">
+      {
+        CERTS.map((c) => (
+          <li>
+            <span class="cert-name">{c.name}</span>
+            <span class="cert-meta">{c.org} · {c.date}</span>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="card-grid">
+      {
+        projects.map((p) => (
+          <a class="card" href={`/projects/${p.id}`}>
+            {p.data.org && <div class="card-org">{p.data.org}</div>}
+            <h3>{p.data.title}</h3>
+            <p>{p.data.summary}</p>
+            <div class="chips">
+              {p.data.stack.slice(0, 7).map((s) => <span class="chip">{s}</span>)}
+            </div>
+            {p.data.period && <div class="meta">{p.data.period}</div>}
+          </a>
+        ))
+      }
+    </div>
+  </section>
+
+  <section id="architecture">
+    <h2>Architecture</h2>
+    <div class="card-grid">
+      {
+        docs.map((d) => (
+          <a class="card" href={`/architecture/${d.id}`}>
+            <h3>{d.data.title}</h3>
+            <p>{d.data.summary}</p>
+            <div class="chips">
+              {d.data.tags.map((t) => <span class="chip">{t}</span>)}
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+</Base>

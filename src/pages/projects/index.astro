@@ -1,0 +1,33 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+
+const projects = (await getCollection('projects')).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+---
+
+<Base title="Projects" description="DevOps · AI Platform 프로젝트 모음">
+  <section class="hero" style="padding-bottom:1rem">
+    <h1 style="font-size:1.9rem">Projects</h1>
+    <p class="tagline">문제 → 판단·설계 → 아키텍처 → 성과로 정리한 프로젝트</p>
+  </section>
+
+  <section>
+    <div class="card-grid">
+      {
+        projects.map((p) => (
+          <a class="card" href={`/projects/${p.id}`}>
+            {p.data.org && <div class="card-org">{p.data.org}</div>}
+            <h3>{p.data.title}</h3>
+            <p>{p.data.summary}</p>
+            <div class="chips">
+              {p.data.stack.slice(0, 7).map((s) => <span class="chip">{s}</span>)}
+            </div>
+            {p.data.period && <div class="meta">{p.data.period}</div>}
+          </a>
+        ))
+      }
+    </div>
+  </section>
+</Base>

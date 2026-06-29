@@ -1,0 +1,50 @@
+---
+title: 전사 통합 AIOps 플랫폼 'Hogwarts'
+summary: AWS Bedrock AgentCore 기반 계층형 AI Agent를 직접 설계해, 멀티 클라우드 운영·비용·보안을 자연어로 다루는 엔터프라이즈 AIOps 컨트롤 센터를 구축했다.
+org: 교보 디플래닉스
+period: 2026.01 – 재직 중
+role: AI Platform Engineer
+stack: [Bedrock AgentCore, FastAPI, Flutter, EKS, Athena, Prometheus, Keycloak, ArgoCD, GitLab CI]
+metrics:
+  - Supervisor + DevOps/FinOps/SecOps 계층형 멀티 에이전트 직접 설계·배포
+  - Context Engineering으로 수백 개 리소스 상태를 핵심 인사이트로 자동 요약 → 분석 시간 대폭 단축
+  - 12 Runtime / 4 Gateway / 3 Memory Store 독립 배포 모노레포 CI/CD 구축
+before: "운영·비용·보안 점검이 사람마다 산발적으로 반복, 통합 컨트롤 부재"
+after: "자연어 한 곳에서 통합 진단 + 수백 개 리소스 핵심 인사이트 자동 요약"
+order: 1
+featured: true
+---
+
+**문제**  멀티 클라우드 운영·비용·보안 점검이 사람마다 산발적으로 반복 → 통합 컨트롤 부재, 비기술 이해관계자는 현황 파악조차 어려움.
+
+**접근**  단발 스크립트 대신 **도메인별 에이전트 + Supervisor 라우팅** 플랫폼으로 통합. AgentCore(Runtime·Gateway·Memory) 기반 계층형 에이전트를 직접 설계.
+
+## 아키텍처
+
+```mermaid
+flowchart TB
+  User[사용자 / Frontend] -- AGUI --> Sup[Supervisor Agent]
+  Sup -- A2A --> Dev[DevOps Agent]
+  Sup -- A2A --> Fin[FinOps Agent]
+  Sup -- A2A --> Sec[SecOps Agent]
+  Dev --> Dsub[Health Check · RCA · Remediation]
+  Fin --> Fsub[Cost Collector · Anomaly · CleanOps · Optimizer]
+  Sec --> Ssub[Vuln Analyst]
+  Dev & Fin & Sec --> GW[AgentCore Gateway · Lambda MCP Tools]
+  GW --> Mem[(AgentCore Memory · session/knowledge/prefs)]
+```
+
+## 핵심 작업
+
+- **계층형 에이전트 설계** — DevOps(Health Check·RCA·Remediation), FinOps(Cost·Anomaly·CleanOps·Optimizer), SecOps(Vuln Analyst), 의도 라우팅·결과 집약 Supervisor
+- **프로토콜 분리** — 에이전트 간 A2A, 사용자–Supervisor AGUI
+- **Gateway + MCP** — 도메인별 AgentCore Gateway에 Lambda MCP Tools 연결, VPC Endpoint 프라이빗 통제
+- **FinOps 최적화 엔진** — K8s/EC2/RDS 실시간 사용량 × 권장 기준 결합, Over/Under 자원 가시화, RI/Savings Plan 분석, 멀티 계정 인보이스 대사
+- **서비스 모듈(FastAPI+Flutter)** — K8s Optimizer, Athena CUR 빌링 분석, Idle Cleaner, NVD 2-Tier CVE, Daily Health 챗봇
+- **모노레포 CI/CD** — 12 Runtime / 4 Gateway / 3 Memory + Backend/Batch/Frontend 독립 배포 (GitLab CI → ECR → Helm/ArgoCD, Cross-Account 3계정)
+
+## 성과
+
+- **비기술 이해관계자도 자연어로** 인프라 현황 직접 파악
+- **Context Engineering**으로 수백 개 리소스 상태를 핵심 인사이트로 자동 요약 → 분석 시간 대폭 단축
+- 멀티 계정 통합 인벤토리·유휴 자원 탐지 자동화, Jira·인보이스·빌링 리포트를 Slack에서 처리
