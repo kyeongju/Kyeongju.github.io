@@ -1,0 +1,100 @@
+---
+import Base from '../../layouts/Base.astro';
+
+// 멀티리전 글로벌 게임 인프라 패턴
+const diagram = {
+  groups: [
+    { id: 'g_tokyo', label: 'Tokyo · ap-northeast-1', type: 'cloud', desc: '국내 런칭 리전.' },
+    { id: 'g_sg', label: 'Singapore · ap-southeast-1', type: 'cloud', desc: '글로벌 확장 리전(아시아).' },
+    { id: 'g_us', label: 'Virginia · us-east-1', type: 'cloud', desc: '글로벌 확장 리전(북미).' },
+  ],
+  nodes: [
+    { id: 'tg', label: 'Terragrunt 모듈', sub: '리전별 변수만 차이', type: 'system', icon: 'layers', layer: 0, col: 2,
+      desc: '기능: 리전 인프라를 코드로 복제\n원칙: 리전별 차이를 변수로만 흡수해 신규 리전을 빠르게 확장' },
+    { id: 'alb_t', label: 'ALB / ASG', type: 'network', icon: 'gateway', layer: 1, col: 0, group: 'g_tokyo',
+      desc: '기능: 트래픽 진입·오토스케일' },
+    { id: 'redis_t', label: 'ElastiCache Redis', type: 'data', icon: 'db', layer: 2, col: 0.5, group: 'g_tokyo',
+      desc: '기능: 세션·캐시 계층(리전 내 지연 흡수)' },
+    { id: 'alb_s', label: 'ALB / ASG', type: 'network', icon: 'gateway', layer: 1, col: 2, group: 'g_sg',
+      desc: '기능: 트래픽 진입·오토스케일' },
+    { id: 'redis_s', label: 'ElastiCache Redis', type: 'data', icon: 'db', layer: 2, col: 2.5, group: 'g_sg',
+      desc: '기능: 세션·캐시 계층' },
+    { id: 'alb_u', label: 'ALB / ASG', type: 'network', icon: 'gateway', layer: 1, col: 4, group: 'g_us',
+      desc: '기능: 트래픽 진입·오토스케일' },
+    { id: 'redis_u', label: 'ElastiCache Redis', type: 'data', icon: 'db', layer: 2, col: 4.5, group: 'g_us',
+      desc: '기능: 세션·캐시 계층' },
+    { id: 'logs', label: 'Filebeat / Logstash', sub: '로그 파이프라인', type: 'service', icon: 'doc', layer: 3, col: 2,
+      desc: '기능: 리전 로그 수집·정규화\n호출·사용: 각 리전 인스턴스 로그 수집' },
+    { id: 'opensearch', label: 'OpenSearch', sub: '실시간 분석·DataStream', type: 'service', icon: 'search', layer: 4, col: 2,
+      desc: '기능: 실시간 로그 분석으로 장애 대응 시간 단축\n개선: DataStream 전환·인덱스 튜닝' },
+  ],
+  edges: [
+    { from: 'tg', to: 'alb_t', label: 'provision', kind: 'sync' },
+    { from: 'tg', to: 'alb_s', kind: 'sync' },
+    { from: 'tg', to: 'alb_u', kind: 'sync' },
+    { from: 'alb_t', to: 'redis_t', label: 'cache', kind: 'sync' },
+    { from: 'alb_s', to: 'redis_s', kind: 'sync' },
+    { from: 'alb_u', to: 'redis_u', kind: 'sync' },
+    { from: 'alb_t', to: 'logs', label: 'logs', kind: 'data' },
+    { from: 'alb_s', to: 'logs', kind: 'data' },
+    { from: 'alb_u', to: 'logs', kind: 'data' },
+    { from: 'logs', to: 'opensearch', kind: 'data' },
+  ],
+  flows: [
+    {
+      id: 'f_global', label: '글로벌 리전 확장', muteEdges: true,
+      desc: 'Terragrunt 모듈로 국내(Tokyo) 런칭 후 동일 구성을 다른 리전으로 복제.',
+      steps: [
+        { from: 'tg', to: 'alb_t', note: '국내(Tokyo) 리전 구성' },
+        { from: 'tg', to: 'alb_s', note: '동일 모듈로 Singapore 확장' },
+        { from: 'tg', to: 'alb_u', note: '동일 모듈로 Virginia 확장' },
+      ],
+    },
+    {
+      id: 'f_logs', label: '실시간 로그 분석', muteEdges: true,
+      desc: '각 리전 로그가 파이프라인을 거쳐 OpenSearch에서 실시간 분석된다.',
+      steps: [
+        { from: 'alb_t', to: 'logs', note: '리전 로그를 Filebeat/Logstash로 수집' },
+        { from: 'logs', to: 'opensearch', note: 'OpenSearch에서 실시간 분석(대응시간 30%↓)' },
+      ],
+    },
+  ],
+};
+---
+
+<Base title="멀티리전 글로벌 게임 인프라 (인터랙티브)" description="국내 런칭 후 글로벌 멀티리전으로 확장하는 게임 인프라 패턴 — 인터랙티브 다이어그램">
+  <link rel="stylesheet" href="/arch/arch.css" />
+  <style is:global>
+    :root {
+      --background: 0 0% 100%; --foreground: 240 10% 4%; --card: 0 0% 100%; --popover: 0 0% 100%;
+      --muted: 240 5% 96%; --muted-foreground: 240 4% 46%; --border: 240 6% 90%; --accent: 240 5% 96%;
+      --primary: 240 6% 13%; --primary-foreground: 0 0% 100%; --secondary: 240 5% 95%; --secondary-foreground: 240 6% 28%;
+      --radius: 0.6rem; --arch-flow: 221 83% 53%;
+      --arch-person: 222 14% 46%; --arch-service: 235 60% 56%; --arch-ai: 174 62% 38%; --arch-security: 352 68% 52%;
+      --arch-data: 275 52% 56%; --arch-network: 202 85% 46%; --arch-aws: 28 85% 52%; --arch-external: 38 92% 50%;
+    }
+    body:has(.arch) .content main { max-width: 1180px; }
+    .role-legend { display: flex; gap: .45rem 1rem; flex-wrap: wrap; margin: .2rem 0 1.2rem; font-size: .78rem; color: hsl(var(--muted-foreground)); }
+    .role-legend span { display: inline-flex; align-items: center; gap: .34rem; }
+    .role-legend i { width: 11px; height: 11px; border-radius: 3px; }
+  </style>
+
+  <article class="prose">
+    <a class="back" href="/architecture">← Architecture</a>
+    <h1>멀티리전 글로벌 게임 인프라 (인터랙티브)</h1>
+    <p class="summary">국내 런칭 후 글로벌로 확장하는 게임 서비스를 위한 멀티리전 고가용성 + 실시간 로그 분석 레퍼런스 패턴입니다.</p>
+
+    <p>"리전은 Terragrunt로 복제하고, 장애는 로그가 먼저 말하게 한다." 동일 모듈로 리전을 복제해 글로벌 가용성을 확보하고, 각 리전 로그를 모아 OpenSearch에서 실시간 분석합니다. 상단 버튼으로 <strong>리전 확장</strong>과 <strong>로그 분석</strong> 경로를 재생할 수 있습니다.</p>
+
+    <div class="role-legend">
+      <span><i style="background:hsl(240 6% 13%)"></i>Terragrunt</span>
+      <span><i style="background:hsl(202 85% 46%)"></i>리전 진입(ALB/ASG)</span>
+      <span><i style="background:hsl(275 52% 56%)"></i>캐시(Redis)</span>
+      <span><i style="background:hsl(235 60% 56%)"></i>로그 파이프라인</span>
+    </div>
+
+    <div class="arch" data-wide><script type="application/json" is:inline set:html={JSON.stringify(diagram)}></script></div>
+  </article>
+
+  <script is:inline src="/arch/arch.js"></script>
+</Base>

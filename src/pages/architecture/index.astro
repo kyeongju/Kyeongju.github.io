@@ -1,57 +1,24 @@
 ---
-import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
-
-const docs = (await getCollection('architecture')).sort(
-  (a, b) => a.data.order - b.data.order,
-);
+import { ARCHITECTURES } from '../../config';
 ---
 
-<Base title="Architecture" description="재사용 가능한 아키텍처 설계 패턴과 심화 기록">
+<Base title="Architecture" description="재사용 가능한 아키텍처 설계 패턴과 인터랙티브 다이어그램">
   <section class="hero" style="padding-bottom:1rem">
-    <h1 style="font-size:1.8rem">Architecture</h1>
-    <p class="tagline">재사용 가능한 설계 패턴과 심화 기록</p>
+    <h1 style="font-size:1.9rem">Architecture</h1>
+    <p class="tagline">재사용 가능한 설계 패턴 — 노드 클릭·플로우 재생이 되는 인터랙티브 다이어그램</p>
   </section>
 
   <section>
     <div class="card-grid">
-      <a class="card" href="/architecture/agentcore">
-        <div class="card-org">Interactive · hskim-arch</div>
-        <h3>AgentCore 멀티 에이전트 (인터랙티브)</h3>
-        <p>Hogwarts AIOps의 Bedrock AgentCore 계층형 에이전트 구조 — 노드 클릭·플로우 재생·스텝 포커스가 되는 인터랙티브 다이어그램.</p>
-        <div class="chips">
-          <span class="chip">Bedrock AgentCore</span>
-          <span class="chip">Multi-Agent</span>
-          <span class="chip">A2A · AGUI</span>
-        </div>
-      </a>
-      <a class="card" href="/architecture/terragrunt">
-        <div class="card-org">Interactive · hskim-arch</div>
-        <h3>멀티 계정 Terragrunt + GitOps (인터랙티브)</h3>
-        <p>실제 Terraform 저장소 구조 기반 — 계층형 Terragrunt 멀티 계정 IaC와 Helm values·ArgoCD GitOps 배포를 인터랙티브 다이어그램으로.</p>
-        <div class="chips">
-          <span class="chip">Terragrunt</span>
-          <span class="chip">Multi-Account</span>
-          <span class="chip">ArgoCD GitOps</span>
-        </div>
-      </a>
-      <a class="card" href="/architecture/thanos">
-        <div class="card-org">Interactive · hskim-arch</div>
-        <h3>Thanos 중앙 집중 관측 (인터랙티브)</h3>
-        <p>다수 EKS 클러스터의 메트릭을 Thanos로 중앙 집중 — 실시간/장기 보관 경로와 단일 Grafana 뷰를 인터랙티브 다이어그램으로.</p>
-        <div class="chips">
-          <span class="chip">Thanos</span>
-          <span class="chip">Prometheus</span>
-          <span class="chip">Observability</span>
-        </div>
-      </a>
       {
-        docs.map((d) => (
-          <a class="card" href={`/architecture/${d.id}`}>
-            <h3>{d.data.title}</h3>
-            <p>{d.data.summary}</p>
+        ARCHITECTURES.map((a) => (
+          <a class="card" href={a.href}>
+            <div class="card-org">Interactive · hskim-arch</div>
+            <h3>{a.title}</h3>
+            <p>{a.summary}</p>
             <div class="chips">
-              {d.data.tags.map((t) => <span class="chip">{t}</span>)}
+              {a.tags.map((t) => <span class="chip">{t}</span>)}
             </div>
           </a>
         ))

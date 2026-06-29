@@ -60,3 +60,31 @@ export const SKILLS: { group: string; level: 'expert' | 'proficient'; items: str
   { group: 'Backend · Frontend', level: 'proficient', items: ['Python', 'FastAPI', 'Flutter', 'MySQL'] },
   { group: 'Auth', level: 'proficient', items: ['Keycloak', 'Entra ID'] },
 ];
+
+// 인터랙티브 아키텍처 (hskim-arch) — 홈·아키텍처 목록에서 공용
+export const ARCHITECTURES: { href: string; title: string; summary: string; tags: string[] }[] = [
+  {
+    href: '/architecture/agentcore',
+    title: 'AgentCore 멀티 에이전트',
+    summary: 'Bedrock AgentCore 계층형 에이전트 — 오케스트레이션과 서브에이전트 구성을 인터랙티브 다이어그램으로.',
+    tags: ['Bedrock AgentCore', 'Multi-Agent', 'A2A · AGUI'],
+  },
+  {
+    href: '/architecture/terragrunt',
+    title: '멀티 계정 Terragrunt + GitOps',
+    summary: '실제 Terraform 구조 기반 — 계층형 Terragrunt 멀티 계정 IaC와 ArgoCD GitOps 배포.',
+    tags: ['Terragrunt', 'Multi-Account', 'ArgoCD GitOps'],
+  },
+  {
+    href: '/architecture/thanos',
+    title: 'Thanos 중앙 집중 관측',
+    summary: '다수 EKS 클러스터 메트릭을 중앙 집중 — 실시간/장기 보관 경로와 단일 Grafana 뷰.',
+    tags: ['Thanos', 'Prometheus', 'Observability'],
+  },
+  {
+    href: '/architecture/multi-region',
+    title: '멀티리전 글로벌 게임 인프라',
+    summary: '리전 복제 고가용성 + 실시간 로그 분석 — 글로벌 확장 패턴.',
+    tags: ['Multi-Region', 'Terragrunt', 'OpenSearch'],
+  },
+];

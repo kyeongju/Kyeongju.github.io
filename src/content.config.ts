@@ -19,15 +19,6 @@ const projects = defineCollection({
   }),
 });
 
-// 아키텍처 정리: 재사용 가능한 설계 패턴/심화 기록
-const architecture = defineCollection({
-  loader: glob({ pattern: '**/*.{md,mdx}', base: './src/content/architecture' }),
-  schema: z.object({
-    title: z.string(),
-    summary: z.string(),
-    tags: z.array(z.string()).default([]),
-    order: z.number().default(99),
-  }),
-});
+// 아키텍처는 인터랙티브 페이지(src/pages/architecture/*.astro)로 관리한다.
 
-export const collections = { projects, architecture };
+export const collections = { projects };
