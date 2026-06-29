@@ -25,6 +25,16 @@ const docs = (await getCollection('architecture')).sort(
           <span class="chip">A2A · AGUI</span>
         </div>
       </a>
+      <a class="card" href="/architecture/terragrunt">
+        <div class="card-org">Interactive · hskim-arch</div>
+        <h3>멀티 계정 Terragrunt + GitOps (인터랙티브)</h3>
+        <p>실제 Terraform 저장소 구조 기반 — 계층형 Terragrunt 멀티 계정 IaC와 Helm values·ArgoCD GitOps 배포를 인터랙티브 다이어그램으로.</p>
+        <div class="chips">
+          <span class="chip">Terragrunt</span>
+          <span class="chip">Multi-Account</span>
+          <span class="chip">ArgoCD GitOps</span>
+        </div>
+      </a>
       {
         docs.map((d) => (
           <a class="card" href={`/architecture/${d.id}`}>

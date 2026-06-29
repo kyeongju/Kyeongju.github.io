@@ -1,0 +1,142 @@
+---
+import Base from '../../layouts/Base.astro';
+
+// ── Diagram A: Terragrunt 계층 + 멀티 계정 IaC ──
+const iac = {
+  groups: [
+    { id: 'g_acc', label: 'AWS 계정 (~16: project × dev/prd/shared)', type: 'external', desc: '프로젝트 × 환경 조합의 멀티 계정. Terragrunt가 일관되게 프로비저닝.' },
+  ],
+  nodes: [
+    { id: 'git', label: 'Git Repo', sub: '단일 소스', type: 'system', icon: 'branch', layer: 0, col: 1,
+      desc: '기능: 인프라 코드의 단일 진실(SSOT)\n구성: 프로젝트별 terragrunt.hcl + 공유 모듈' },
+    { id: 'modules', label: '_modules', sub: '공유 모듈(버전관리)', type: 'data', icon: 'package', layer: 1, col: 0,
+      desc: '기능: 재사용 가능한 인프라 모듈(eks/vpc 등)\n호출·사용: 환경 설정이 버전 지정해 참조' },
+    { id: 'common', label: 'common_vars.yaml', sub: '전사 공통', type: 'service', icon: 'doc', layer: 1, col: 1,
+      desc: '기능: 전 프로젝트 공통 변수\n참조: 하위 root.hcl이 상속' },
+    { id: 'root', label: 'project root.hcl', sub: '프로젝트 루트', type: 'service', icon: 'doc', layer: 2, col: 1,
+      desc: '기능: 프로젝트(exo/ext/internal/kbdi)별 루트 설정' },
+    { id: 'backend', label: 'State Backend', sub: 'S3 + DynamoDB', type: 'data', icon: 'storage', layer: 2, col: 2,
+      desc: '기능: 원격 state 저장·잠금\n구성: S3(버전) + DynamoDB(lock)' },
+    { id: 'envh', label: 'env.hcl', sub: 'dev/prd/shared', type: 'service', icon: 'doc', layer: 3, col: 1,
+      desc: '기능: 환경별 오버레이\n계층: common → root → env → 리소스' },
+    { id: 'tg', label: 'Terragrunt apply', sub: '계층 병합 → provision', type: 'network', icon: 'layers', layer: 4, col: 1,
+      desc: '기능: 계층 설정을 병합해 대상 계정에 프로비저닝' },
+    { id: 'a_exo', label: 'exo', type: 'external', icon: 'cloud', layer: 5, col: 0, group: 'g_acc', desc: '데이터 플랫폼 프로젝트 계정군' },
+    { id: 'a_kbdi', label: 'kbdi', type: 'external', icon: 'cloud', layer: 5, col: 1, group: 'g_acc', desc: '데이터 플랫폼 프로젝트 계정군' },
+    { id: 'a_ext', label: 'ext', type: 'external', icon: 'cloud', layer: 5, col: 2, group: 'g_acc', desc: '외부 연계 프로젝트 계정' },
+    { id: 'a_internal', label: 'internal', type: 'external', icon: 'cloud', layer: 5, col: 3, group: 'g_acc', desc: '사내 시스템 프로젝트 계정' },
+  ],
+  edges: [
+    { from: 'git', to: 'common', kind: 'data' },
+    { from: 'common', to: 'root', label: '상속', kind: 'data' },
+    { from: 'root', to: 'envh', kind: 'data' },
+    { from: 'modules', to: 'tg', label: '재사용 모듈', kind: 'data' },
+    { from: 'envh', to: 'tg', kind: 'sync' },
+    { from: 'backend', to: 'tg', label: 'state', kind: 'data' },
+    { from: 'tg', to: 'a_exo', label: 'provision', kind: 'sync' },
+    { from: 'tg', to: 'a_kbdi', kind: 'sync' },
+    { from: 'tg', to: 'a_ext', kind: 'sync' },
+    { from: 'tg', to: 'a_internal', kind: 'sync' },
+  ],
+  flows: [
+    {
+      id: 'f_apply', label: '계층 병합 → 배포', muteEdges: true,
+      desc: 'common → root → env로 설정이 상속·오버레이된 뒤 Terragrunt가 대상 계정에 프로비저닝.',
+      steps: [
+        { from: 'git', to: 'common', note: 'Git의 공통 변수에서 시작' },
+        { from: 'common', to: 'root', note: '프로젝트 루트가 공통 변수 상속' },
+        { from: 'root', to: 'envh', note: '환경별 오버레이 적용(dev/prd/shared)' },
+        { from: 'envh', to: 'tg', note: 'Terragrunt가 계층 병합' },
+        { from: 'tg', to: 'a_exo', note: '대상 AWS 계정에 프로비저닝' },
+      ],
+    },
+  ],
+};
+
+// ── Diagram B: GitOps 배포 (Helm values → ArgoCD → EKS) ──
+const gitops = {
+  groups: [
+    { id: 'g_add', label: 'EKS 애드온', type: 'cloud', desc: 'ArgoCD가 동기화하는 클러스터 애드온(Helm values 중앙 관리).' },
+  ],
+  nodes: [
+    { id: 'helmgit', label: 'Git · _helm_values', sub: 'ArgoCD App · Helm values', type: 'system', icon: 'branch', layer: 0, col: 1,
+      desc: '기능: 클러스터 상태의 선언적 정의\n구성: ArgoCD Application + 차트별 values' },
+    { id: 'argocd', label: 'ArgoCD', sub: 'GitOps', type: 'service', icon: 'workflow', layer: 1, col: 1,
+      desc: '기능: Git 상태와 클러스터 동기화·자동 롤백' },
+    { id: 'eks', label: 'EKS 클러스터', sub: '역할 분리 NodeGroup', type: 'aws', icon: 'box', layer: 2, col: 1,
+      desc: '기능: 워크로드 실행\n구성: controller/app/monitoring NodeGroup' },
+    { id: 'scale', label: '스케일링', sub: 'Karpenter · HPA', type: 'service', icon: 'zap', layer: 3, col: 0, group: 'g_add',
+      desc: '기능: 노드·파드 자동 확장' },
+    { id: 'net', label: '네트워킹', sub: 'Cilium · AWS LB Controller · Nginx', type: 'service', icon: 'gateway', layer: 3, col: 1, group: 'g_add',
+      desc: '기능: CNI·인그레스·로드밸런싱' },
+    { id: 'obs', label: '관측', sub: 'kube-prometheus · Loki · Vector', type: 'data', icon: 'chart', layer: 3, col: 2, group: 'g_add',
+      desc: '기능: 메트릭·로그 수집·대시보드' },
+    { id: 'auth', label: '인증', sub: 'Keycloak', type: 'security', icon: 'key', layer: 3, col: 3, group: 'g_add',
+      desc: '기능: SSO·RBAC' },
+  ],
+  edges: [
+    { from: 'helmgit', to: 'argocd', kind: 'sync' },
+    { from: 'argocd', to: 'eks', label: 'deploy', kind: 'sync' },
+    { from: 'eks', to: 'scale', kind: 'data' },
+    { from: 'eks', to: 'net', kind: 'data' },
+    { from: 'eks', to: 'obs', kind: 'data' },
+    { from: 'eks', to: 'auth', kind: 'data' },
+  ],
+  flows: [
+    {
+      id: 'f_deploy', label: 'Helm values → 배포', muteEdges: true,
+      desc: 'Git의 Helm values 변경이 ArgoCD를 통해 EKS에 선언적으로 반영.',
+      steps: [
+        { from: 'helmgit', to: 'argocd', note: 'values 변경이 Git에 push' },
+        { from: 'argocd', to: 'eks', note: 'ArgoCD가 클러스터와 동기화·배포' },
+      ],
+    },
+  ],
+};
+---
+
+<Base title="멀티 계정 Terragrunt + GitOps (인터랙티브)" description="실제 Terraform/Terragrunt 구조 기반 멀티 계정 IaC와 ArgoCD GitOps 배포 — 인터랙티브 다이어그램">
+  <link rel="stylesheet" href="/arch/arch.css" />
+  <style is:global>
+    :root {
+      --background: 0 0% 100%; --foreground: 240 10% 4%; --card: 0 0% 100%; --popover: 0 0% 100%;
+      --muted: 240 5% 96%; --muted-foreground: 240 4% 46%; --border: 240 6% 90%; --accent: 240 5% 96%;
+      --primary: 240 6% 13%; --primary-foreground: 0 0% 100%; --secondary: 240 5% 95%; --secondary-foreground: 240 6% 28%;
+      --radius: 0.6rem; --arch-flow: 221 83% 53%;
+      --arch-person: 222 14% 46%; --arch-service: 235 60% 56%; --arch-ai: 174 62% 38%; --arch-security: 352 68% 52%;
+      --arch-data: 275 52% 56%; --arch-network: 202 85% 46%; --arch-aws: 28 85% 52%; --arch-external: 38 92% 50%;
+    }
+    body:has(.arch) .content main { max-width: 1180px; }
+    .role-legend { display: flex; gap: .45rem 1rem; flex-wrap: wrap; margin: .2rem 0 1.2rem; font-size: .78rem; color: hsl(var(--muted-foreground)); }
+    .role-legend span { display: inline-flex; align-items: center; gap: .34rem; }
+    .role-legend i { width: 11px; height: 11px; border-radius: 3px; }
+  </style>
+
+  <article class="prose">
+    <a class="back" href="/architecture">← Architecture</a>
+    <h1>멀티 계정 Terragrunt + GitOps (인터랙티브)</h1>
+    <p class="summary">실제 Terraform/Terragrunt 저장소 구조를 기반으로 한 멀티 계정 IaC와 ArgoCD GitOps 배포 구조입니다.</p>
+
+    <p>인프라는 <strong>계층형 Terragrunt</strong>(common → project → env)로 정의되고 공유 모듈을 재사용하며, 클러스터 상태는 <strong>Helm values + ArgoCD GitOps</strong>로 선언적으로 관리됩니다. 두 다이어그램이 각각 <strong>IaC 계층</strong>과 <strong>GitOps 배포</strong>를 보여줍니다. (계정ID·시크릿 등 민감정보는 제외)</p>
+
+    <div class="role-legend">
+      <span><i style="background:hsl(240 6% 13%)"></i>Git·트리거</span>
+      <span><i style="background:hsl(235 60% 56%)"></i>설정·서비스</span>
+      <span><i style="background:hsl(275 52% 56%)"></i>모듈·상태·데이터</span>
+      <span><i style="background:hsl(202 85% 46%)"></i>Terragrunt</span>
+      <span><i style="background:hsl(28 85% 52%)"></i>EKS</span>
+      <span><i style="background:hsl(38 92% 50%)"></i>AWS 계정</span>
+      <span><i style="background:hsl(352 68% 52%)"></i>인증</span>
+    </div>
+
+    <h2>1. Terragrunt 계층 &amp; 멀티 계정 IaC</h2>
+    <p>공통 변수 → 프로젝트 루트 → 환경 오버레이 순으로 설정이 상속되고, 공유 모듈을 재사용해 약 16개 AWS 계정을 일관되게 프로비저닝합니다. "계층 병합 → 배포" 버튼으로 흐름을 재생할 수 있습니다.</p>
+    <div class="arch" data-wide><script type="application/json" is:inline set:html={JSON.stringify(iac)}></script></div>
+
+    <h2>2. GitOps 배포 (Helm values → ArgoCD → EKS)</h2>
+    <p>Helm values 변경이 ArgoCD를 통해 EKS에 선언적으로 반영됩니다. 스케일링·네트워킹·관측·인증 애드온이 중앙 관리됩니다.</p>
+    <div class="arch" data-wide><script type="application/json" is:inline set:html={JSON.stringify(gitops)}></script></div>
+  </article>
+
+  <script is:inline src="/arch/arch.js"></script>
+</Base>
