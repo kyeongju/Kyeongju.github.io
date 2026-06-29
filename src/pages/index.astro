@@ -103,7 +103,6 @@ const projects = (await getCollection('projects')).sort(
       {
         ARCHITECTURES.map((a) => (
           <a class="card" href={a.href}>
-            <div class="card-org">Interactive · hskim-arch</div>
             <h3>{a.title}</h3>
             <p>{a.summary}</p>
             <div class="chips">
