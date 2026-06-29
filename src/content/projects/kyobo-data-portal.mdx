@@ -15,7 +15,7 @@ order: 2
 featured: true
 ---
 
-**문제**  3개 프로젝트(exo·kbdi·ext) × dev/sdx/prd × 약 16개 계정 → 설정이 계정마다 흩어져 보안 리스크·운영 부담 동시 증가, 폐쇄망 제약까지 중첩.
+**문제**  3개 프로젝트 × dev/sdx/prd × 약 16개 계정 → 설정이 계정마다 흩어져 보안 리스크·운영 부담 동시 증가, 폐쇄망 제약까지 중첩.
 
 **접근**  인프라를 **계층형 코드(Terragrunt)** 로 정의하고 배포는 **Git 단일 소스(ArgoCD)** 로 수렴. 거버넌스는 Control Tower로 계정 생성 시점부터 가드레일.
 
@@ -28,7 +28,7 @@ flowchart TB
     Root --> Env[env.hcl]
     Env --> Mods[_modules · eks_v20 / vpc_v2]
   end
-  Mods --> Acc[(~16 AWS 계정 · exo/kbdi/ext)]
+  Mods --> Acc[(~16 AWS 계정 · project × env)]
   CT[Control Tower + IAM Identity Center] --> Acc
   Git[(Git)] --> Argo[ArgoCD] --> EKS[(EKS NodeGroups)]
   EKS --> Thanos[Thanos · 멀티 클러스터 중앙 메트릭]
