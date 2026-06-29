@@ -1,0 +1,103 @@
+---
+import Base from '../../layouts/Base.astro';
+
+// Thanos 멀티 클러스터 중앙 집중 관측
+const diagram = {
+  groups: [
+    { id: 'g_clusters', label: '다수 EKS 클러스터', type: 'cloud', desc: '운영·개발 환경의 여러 Kubernetes 클러스터. 각자 Prometheus·Vector 사이드카로 수집.' },
+  ],
+  nodes: [
+    { id: 'c1', label: 'EKS 클러스터 1', sub: 'Prometheus·Vector', type: 'data', icon: 'box', layer: 0, col: 1, group: 'g_clusters',
+      desc: '기능: 워크로드 메트릭·로그 수집\n구성: Prometheus(사이드카) + Vector' },
+    { id: 'c2', label: 'EKS 클러스터 2', sub: 'Prometheus·Vector', type: 'data', icon: 'box', layer: 0, col: 2, group: 'g_clusters',
+      desc: '기능: 워크로드 메트릭·로그 수집\n구성: Prometheus(사이드카) + Vector' },
+    { id: 'loki', label: 'Loki', sub: '로그', type: 'data', icon: 'doc', layer: 1, col: 3,
+      desc: '기능: 로그 집계·조회\n호출·사용: Vector가 클러스터 로그를 전송' },
+    { id: 'nlb', label: 'NLB', sub: '크로스 클러스터', type: 'network', icon: 'gateway', layer: 1, col: 1.5,
+      desc: '기능: 클러스터 간 실시간 쿼리 진입점\n구성: LoadBalancer 기반' },
+    { id: 'store', label: 'Store Gateway', type: 'service', icon: 'storage', layer: 2, col: 0,
+      desc: '기능: S3의 과거 메트릭을 쿼리로 노출' },
+    { id: 'query', label: 'Thanos Query', type: 'service', icon: 'search', layer: 2, col: 1.5,
+      desc: '기능: 실시간(NLB)·과거(Store) 메트릭을 단일 쿼리로 통합' },
+    { id: 's3', label: 'KMS 암호화 S3', sub: '장기 보관', type: 'data', icon: 'bucket', layer: 2, col: 3,
+      desc: '기능: 장기 메트릭 블록 저장\n구성: VPC Endpoint 경유 KMS 암호화' },
+    { id: 'qf', label: 'Query Frontend', type: 'service', icon: 'layers', layer: 3, col: 1.5,
+      desc: '기능: 쿼리 분할·캐시로 응답 가속' },
+    { id: 'compactor', label: 'Compactor', sub: '다운샘플링', type: 'service', icon: 'package', layer: 3, col: 3,
+      desc: '기능: 블록 압축·다운샘플링으로 비용·성능 관리' },
+    { id: 'grafana', label: '단일 Grafana 뷰', type: 'data', icon: 'monitor', layer: 4, col: 1.5,
+      desc: '기능: 흩어진 클러스터 메트릭을 하나의 대시보드로' },
+  ],
+  edges: [
+    { from: 'c1', to: 'nlb', kind: 'data' },
+    { from: 'c2', to: 'nlb', kind: 'data' },
+    { from: 'nlb', to: 'query', label: '실시간', kind: 'data' },
+    { from: 'c1', to: 's3', label: 'blocks', kind: 'data' },
+    { from: 'c2', to: 's3', kind: 'data' },
+    { from: 's3', to: 'store', kind: 'data' },
+    { from: 'store', to: 'query', label: '과거', kind: 'data' },
+    { from: 'compactor', to: 's3', label: 'compaction', kind: 'data' },
+    { from: 'query', to: 'qf', kind: 'sync' },
+    { from: 'qf', to: 'grafana', kind: 'sync' },
+    { from: 'c1', to: 'loki', kind: 'data' },
+    { from: 'c2', to: 'loki', kind: 'data' },
+  ],
+  flows: [
+    {
+      id: 'f_realtime', label: '실시간 조회', muteEdges: true,
+      desc: '클러스터 사이드카 → NLB → Thanos Query → Query Frontend → Grafana의 실시간 경로.',
+      steps: [
+        { from: 'c1', to: 'nlb', note: '사이드카 메트릭을 NLB로 노출' },
+        { from: 'nlb', to: 'query', note: 'Thanos Query가 실시간 수집' },
+        { from: 'query', to: 'qf', note: 'Query Frontend가 분할·캐시' },
+        { from: 'qf', to: 'grafana', note: '단일 Grafana 뷰로 표시' },
+      ],
+    },
+    {
+      id: 'f_longterm', label: '장기 보관 조회', muteEdges: true,
+      desc: '장기 메트릭은 S3에 블록으로 보관되고 Store Gateway를 통해 조회된다.',
+      steps: [
+        { from: 'c1', to: 's3', note: '메트릭 블록을 KMS 암호화 S3에 업로드' },
+        { from: 's3', to: 'store', note: 'Store Gateway가 과거 블록 노출' },
+        { from: 'store', to: 'query', note: 'Thanos Query가 과거 데이터 통합' },
+      ],
+    },
+  ],
+};
+---
+
+<Base title="Thanos 중앙 집중 관측 (인터랙티브)" description="다수 EKS 클러스터의 메트릭을 Thanos로 중앙 집중하는 관측 아키텍처 — 인터랙티브 다이어그램">
+  <link rel="stylesheet" href="/arch/arch.css" />
+  <style is:global>
+    :root {
+      --background: 0 0% 100%; --foreground: 240 10% 4%; --card: 0 0% 100%; --popover: 0 0% 100%;
+      --muted: 240 5% 96%; --muted-foreground: 240 4% 46%; --border: 240 6% 90%; --accent: 240 5% 96%;
+      --primary: 240 6% 13%; --primary-foreground: 0 0% 100%; --secondary: 240 5% 95%; --secondary-foreground: 240 6% 28%;
+      --radius: 0.6rem; --arch-flow: 221 83% 53%;
+      --arch-person: 222 14% 46%; --arch-service: 235 60% 56%; --arch-ai: 174 62% 38%; --arch-security: 352 68% 52%;
+      --arch-data: 275 52% 56%; --arch-network: 202 85% 46%; --arch-aws: 28 85% 52%; --arch-external: 38 92% 50%;
+    }
+    body:has(.arch) .content main { max-width: 1180px; }
+    .role-legend { display: flex; gap: .45rem 1rem; flex-wrap: wrap; margin: .2rem 0 1.2rem; font-size: .78rem; color: hsl(var(--muted-foreground)); }
+    .role-legend span { display: inline-flex; align-items: center; gap: .34rem; }
+    .role-legend i { width: 11px; height: 11px; border-radius: 3px; }
+  </style>
+
+  <article class="prose">
+    <a class="back" href="/architecture">← Architecture</a>
+    <h1>Thanos 중앙 집중 관측 (인터랙티브)</h1>
+    <p class="summary">다수 Kubernetes 클러스터의 메트릭을 Thanos로 중앙 집중하고, KMS 암호화 S3 장기 보관과 단일 Grafana 뷰를 확보하는 패턴입니다.</p>
+
+    <p>"클러스터는 흩어져 있어도, 메트릭은 하나의 뷰에서 본다." <strong>실시간</strong>은 사이드카 → NLB → Thanos Query로, <strong>장기 보관</strong>은 S3 → Store Gateway로 조회되며, 두 경로가 Query에서 합쳐집니다. 상단 버튼으로 각 경로를 재생할 수 있습니다.</p>
+
+    <div class="role-legend">
+      <span><i style="background:hsl(275 52% 56%)"></i>클러스터·저장·시각화</span>
+      <span><i style="background:hsl(235 60% 56%)"></i>Thanos 컴포넌트</span>
+      <span><i style="background:hsl(202 85% 46%)"></i>NLB</span>
+    </div>
+
+    <div class="arch" data-wide><script type="application/json" is:inline set:html={JSON.stringify(diagram)}></script></div>
+  </article>
+
+  <script is:inline src="/arch/arch.js"></script>
+</Base>

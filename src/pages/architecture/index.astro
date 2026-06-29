@@ -35,6 +35,16 @@ const docs = (await getCollection('architecture')).sort(
           <span class="chip">ArgoCD GitOps</span>
         </div>
       </a>
+      <a class="card" href="/architecture/thanos">
+        <div class="card-org">Interactive · hskim-arch</div>
+        <h3>Thanos 중앙 집중 관측 (인터랙티브)</h3>
+        <p>다수 EKS 클러스터의 메트릭을 Thanos로 중앙 집중 — 실시간/장기 보관 경로와 단일 Grafana 뷰를 인터랙티브 다이어그램으로.</p>
+        <div class="chips">
+          <span class="chip">Thanos</span>
+          <span class="chip">Prometheus</span>
+          <span class="chip">Observability</span>
+        </div>
+      </a>
       {
         docs.map((d) => (
           <a class="card" href={`/architecture/${d.id}`}>
