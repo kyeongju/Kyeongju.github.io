@@ -10,8 +10,8 @@ export const SITE = {
   // 공개해도 되는 링크만 선택적으로 채우세요. 비우면 표시되지 않습니다.
   links: {
     github: 'https://github.com/kyeongju',
-    linkedin: '',
-    email: '',
+    linkedin: 'https://www.linkedin.com/in/kyeongju-lee',
+    email: 'kyeongju_lee@naver.com',
   },
 };
 

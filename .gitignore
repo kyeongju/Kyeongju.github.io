@@ -24,3 +24,6 @@ pnpm-debug.log*
 
 # OMC state
 .omc/
+
+# local work memory (not published)
+WORKLOG.md
