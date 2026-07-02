@@ -4,7 +4,7 @@ summary: 고가용성 AWS 아키텍처를 IaC로 표준화하고, 국내 런칭 
 org: 라인게임즈
 period: 2022.01 – 2024.06
 role: DevOps Engineer
-stack: [AWS, Terraform, Terragrunt, OpenSearch, Logstash, Redis, CloudFront, Grafana, PMM, Zabbix, Sentry]
+stack: [AWS, Terraform, Terragrunt, EC2, "Auto Scaling", ALB, NLB, Route53, CloudFront, "VPC Peering", "NAT Gateway", Aurora, RDS, Redis, OpenSearch, Logstash, Grafana, PMM, Zabbix, Sentry]
 metrics:
   - 로그 파이프라인 고도화로 장애 대응 시간 30% 단축
   - DataStream 전환으로 로그 수집 속도 50% 향상
@@ -23,19 +23,30 @@ featured: true
 
 ```mermaid
 flowchart TB
-  subgraph Global[국내 → 글로벌 멀티리전]
-    EC2[EC2 / ALB] --> Redis[(ElastiCache · Redis)]
+  Client[글로벌 게이머] --> R53[Route53 · DNS]
+  Client --> CF[CloudFront + S3 · 클라이언트 패치]
+  TF[Terraform / Terragrunt] -. provision .-> JP & SG & US
+  R53 --> JP & SG & US
+  subgraph JP[Tokyo · ap-northeast-1]
+    Lj[ALB / NLB] --> Ej[EC2 · Auto Scaling] --> Rj[(Redis)] & Dj[(Aurora)]
   end
-  TF[Terraform / Terragrunt] --> Global
-  Logs[Filebeat / Logstash] --> OS[(OpenSearch · DataStream)]
-  CF[CloudFront + S3] --> Client[클라이언트 패치 배포]
-  Global --> Mon[PMM / Zabbix / Grafana / Sentry]
+  subgraph SG[Singapore · ap-southeast-1]
+    Ls[ALB / NLB] --> Es[EC2 · Auto Scaling] --> Rs[(Redis)] & Ds[(Aurora)]
+  end
+  subgraph US[Virginia · us-east-1]
+    Lu[ALB / NLB] --> Eu[EC2 · Auto Scaling] --> Ru[(Redis)] & Du[(Aurora)]
+  end
+  MG[Manage 허브 · Tokyo] <-->|VPC Peering| JP & SG & US
+  JP <-->|VPC Peering| SG & US
+  Ej & Es & Eu --> Logs[Filebeat / Logstash] --> OS[(OpenSearch · DataStream)]
+  JP & SG & US --> Mon[PMM / Zabbix / Grafana / Sentry]
 ```
 
 ## 핵심 작업
 
-- **글로벌 아키텍처** — 고가용성·확장성 고려 AWS 설계, 국내 런칭 후 멀티리전 확장
-- **IaC 표준화** — Terraform + Terragrunt로 구성 표준화·재사용성 확보
+- **글로벌 아키텍처** — Route53 DNS 진입 → ALB/NLB → EC2 Auto Scaling 게임 서버 → Aurora·Redis 데이터 계층, VPC(NAT/IGW·다중 서브넷·SG)까지 고가용성 설계. 국내 런칭 후 도쿄·싱가포르·버지니아 멀티리전 확장
+- **VPC Peering 메시** — Tokyo의 **Manage 허브**가 모든 리전·QA(서울)와 Peering하고 Tokyo↔Singapore·Virginia를 추가 연결해 글로벌 사설 통신 확보
+- **IaC 표준화** — Terraform + Terragrunt로 `region.hcl`/`env.hcl` + `_envcommon` 계층화, VPC·ALB·ASG·RDS(Aurora)·Redis·CloudFront 모듈을 리전 변수만 바꿔 재사용
 - **실시간 로그 파이프라인** — OpenSearch + Filebeat + Logstash, DataStream 전환, Logstash 최적화, 인덱스 튜닝(40~50GB)
 - **배포·모니터링** — GitLab CI/Jenkins, CloudFront+S3 클라이언트 패치 + 메신저 알림, PMM/Zabbix/Grafana/Sentry 다층 모니터링
 
