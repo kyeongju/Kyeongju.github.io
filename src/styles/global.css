@@ -73,6 +73,14 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 }
 .side-nav a:hover { color: var(--accent); background: var(--accent-soft); text-decoration: none; }
 
+.side-links { display: flex; gap: 0.35rem; margin-top: 1.25rem; padding: 0 0.45rem; }
+.side-links a {
+  display: flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px; border-radius: 8px;
+  color: var(--fg-muted);
+}
+.side-links a:hover { color: var(--accent); background: var(--accent-soft); text-decoration: none; }
+
 /* ── home: about / experience / skills / certs ── */
 .about-text { color: var(--fg); font-size: 1.02rem; line-height: 1.8; margin: 0; }
 
@@ -138,6 +146,13 @@ a.chip:hover { border-color: var(--accent); color: var(--accent); text-decoratio
 .hero h1 { font-size: 2.1rem; line-height: 1.2; margin: 0 0 0.8rem; letter-spacing: -0.035em; font-weight: 800; }
 .hero p.tagline { color: var(--fg-muted); font-size: 1.12rem; margin: 0 0 1.5rem; line-height: 1.6; }
 .hero .badges { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.hero-contact {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 0.65rem;
+  margin: 1.25rem 0 0; font-size: 0.85rem; color: var(--fg-muted);
+}
+.hero-contact > * + *::before { content: '·'; margin-right: 0.65rem; color: var(--border-strong); }
+.hero-contact a { color: var(--fg-muted); transition: color 0.15s ease; }
+.hero-contact a:hover { color: var(--accent); text-decoration: none; }
 
 /* ── sections ── */
 section { padding: 1.75rem 0; }
@@ -277,6 +292,7 @@ section h2::before {
   .brand-mark { margin-bottom: 0; }
   .avatar { width: 34px; height: 34px; font-size: 0.9rem; }
   .side-nav { flex-direction: row; flex-wrap: wrap; gap: 0.2rem; }
+  .side-links { margin-top: 0; margin-left: auto; padding: 0; }
   .skills-grid { grid-template-columns: 1fr; }
   .exp { flex-direction: column; gap: 0.3rem; }
   .exp-period { flex-basis: auto; }
@@ -289,4 +305,6 @@ section h2::before {
   body { font-size: 16px; }
   .hero { padding: 2.5rem 0 1.25rem; }
   .hero h1 { font-size: 1.7rem; }
+  /* 좁은 화면에선 상단 바가 넘치지 않게 아이콘 숨김 — 히어로 Contact/GitHub 버튼이 대신함 */
+  .side-links { display: none; }
 }

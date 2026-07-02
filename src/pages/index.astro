@@ -18,6 +18,11 @@ const projects = (await getCollection('projects')).sort(
       <span class="chip">Terraform · GitOps</span>
       <span class="chip">AIOps · LLM</span>
     </div>
+    <p class="hero-contact">
+      {SITE.links.email && <span>{SITE.links.email}</span>}
+      {SITE.links.github && <a href={SITE.links.github} target="_blank" rel="noopener">GitHub ↗</a>}
+      {SITE.links.linkedin && <a href={SITE.links.linkedin} target="_blank" rel="noopener">LinkedIn ↗</a>}
+    </p>
   </section>
 
   <section id="about">
