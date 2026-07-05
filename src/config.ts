@@ -33,7 +33,7 @@ export const EXPERIENCE: { org: string; period: string; role: string; desc: stri
     org: '교보 디플래닉스',
     period: '2024.06 – 재직 중',
     role: 'DevOps · Platform Engineer',
-    desc: '그룹 데이터 통합 포털의 ~16개 AWS 계정 인프라를 Terragrunt/GitOps로 표준화하고, Bedrock AgentCore 기반 전사 AIOps 플랫폼(Hogwarts)을 직접 설계·개발.',
+    desc: '그룹 데이터 통합 포털의 ~16개 AWS 계정 인프라를 Terragrunt/GitOps로 표준화하고, Bedrock AgentCore 기반 전사 AIOps 플랫폼을 직접 설계·개발.',
   },
   {
     org: '라인게임즈',
