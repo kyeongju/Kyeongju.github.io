@@ -1,0 +1,109 @@
+---
+import Base from '../../layouts/Base.astro';
+
+// ── LLM Gateway(LiteLLM) + Observability(Langfuse) 데이터 흐름 ──
+const gateway = {
+  groups: [
+    { id: 'g_gw', label: 'LLM Gateway', type: 'cloud', desc: 'LiteLLM 게이트웨이 계층. virtual key 인증·모델 alias·프롬프트 캐싱·비용 집계·관측 콜백을 담당하는 단일 관문.' },
+    { id: 'g_obs', label: 'Observability', type: 'data', desc: 'Langfuse 관측 계층. LLM 호출의 프롬프트/응답/토큰/사용자를 trace로 저장하고 대시보드를 제공.' },
+  ],
+  nodes: [
+    { id: 'backend', label: 'Backend', sub: '사용자 대면 챗', type: 'service', icon: 'box', layer: 0, col: 0,
+      desc: '기능: 사용자 대면 챗에서 LLM 호출.\n호출: ChatOpenAI로 Gateway의 /v1 엔드포인트 호출 (virtual key + user 파라미터).\n산출: 챗 응답 + 사용자별 trace.' },
+    { id: 'agent', label: 'Agent Runtime', sub: 'devops / finops / secops', type: 'ai', icon: 'bot', layer: 0, col: 1.5,
+      desc: '기능: LangGraph coordinator agent (AgentCore Runtime).\n구성: devops / finops / secops 도메인.\n호출: Gateway 경유 ChatOpenAI 사용 (도메인별 virtual key).' },
+    { id: 'cli', label: 'Coding CLI', sub: '개발자', type: 'person', icon: 'user', layer: 0, col: 3,
+      desc: '기능: 개발자 CLI. base URL을 Gateway로 지정해 Claude 모델 사용.\n호출: virtual key로 인증.' },
+    { id: 'gateway', label: 'LiteLLM Gateway', sub: 'internal ALB', type: 'network', icon: 'gateway', layer: 1, col: 1.5, group: 'g_gw',
+      desc: '기능: 모든 LLM 호출의 단일 관문.\n처리: ① virtual key 검증 ② 모델 alias 해석(claude-sonnet 등) ③ Prompt Caching(system cache_control 주입) ④ 비용/사용량 집계 ⑤ 관측 콜백으로 trace 전송.' },
+    { id: 'bedrock', label: 'AWS Bedrock', sub: 'Claude (IRSA)', type: 'aws', icon: 'sparkles', layer: 2, col: 1.5,
+      desc: '기능: 실제 LLM 추론(Claude sonnet/haiku/opus).\n호출: Gateway가 IRSA로 InvokeModel — API 키 없이 IAM 역할 인증.\n산출: LLM 응답 → Gateway로 반환.' },
+    { id: 'langfuse', label: 'Langfuse', sub: 'web + worker', type: 'service', icon: 'chart', layer: 3, col: 1.5, group: 'g_obs',
+      desc: '기능: LLM Observability. 프롬프트/응답/토큰/지연/사용자(userId)를 trace로 수집.\n수신: Gateway의 success_callback (in-cluster 주소, egress 불필요).\n산출: Tracing/Users 대시보드, 사용자·모델별 사용량·비용.' },
+    { id: 'clickhouse', label: 'ClickHouse', sub: 'trace 저장', type: 'data', icon: 'db', layer: 4, col: 0.4, group: 'g_obs',
+      desc: '기능: trace/observation/score 대용량 timeseries 저장소.\n주의: OSS는 자동 retention 없음 → TTL로 관리.' },
+    { id: 'postgres', label: 'PostgreSQL', sub: '메타데이터', type: 'data', icon: 'db', layer: 4, col: 1.5, group: 'g_obs',
+      desc: '기능: org/project/user/API 키 등 메타데이터 저장.' },
+    { id: 'minio', label: 'MinIO (S3)', sub: 'large payload', type: 'data', icon: 'bucket', layer: 4, col: 2.6, group: 'g_obs',
+      desc: '기능: 큰 프롬프트/응답 본문(large payload) 객체 저장.' },
+  ],
+  edges: [
+    { from: 'backend', to: 'gateway', label: 'LLM 호출 (vkey+user)', kind: 'sync', desc: 'ChatOpenAI → /v1/chat/completions. user 파라미터로 최종 사용자 전달.' },
+    { from: 'agent', to: 'gateway', label: 'LLM 호출 (vkey)', kind: 'sync', desc: 'agent의 ChatOpenAI 호출.' },
+    { from: 'cli', to: 'gateway', label: 'base URL 지정', kind: 'sync', desc: '개발자 CLI → /v1/messages.' },
+    { from: 'gateway', to: 'bedrock', label: 'InvokeModel (alias→모델, 캐싱)', kind: 'sync', desc: 'alias 해석 + Prompt Caching 후 Bedrock 호출 (IRSA).' },
+    { from: 'bedrock', to: 'gateway', label: 'LLM 응답', kind: 'data', desc: '추론 결과 반환.' },
+    { from: 'gateway', to: 'langfuse', label: 'success_callback (trace)', kind: 'async', desc: '프롬프트/응답/토큰/userId를 비동기 전송. in-cluster 주소.' },
+    { from: 'langfuse', to: 'clickhouse', label: 'trace 저장', kind: 'data' },
+    { from: 'langfuse', to: 'postgres', label: '메타데이터', kind: 'data' },
+    { from: 'langfuse', to: 'minio', label: 'large payload', kind: 'data' },
+  ],
+  flows: [
+    { id: 'f_request', label: '① LLM 요청 한 건의 생애주기', muteEdges: true,
+      desc: '요청자 → Gateway → Bedrock → 응답 → Langfuse 기록까지의 전체 흐름. Gateway가 실행(제어)과 관측(콜백)을 동시에 담당한다.',
+      steps: [
+        { from: 'backend', to: 'gateway', note: '요청 — 서비스가 virtual key + user 파라미터로 Gateway /v1 호출' },
+        { from: 'gateway', to: 'bedrock', note: 'Bedrock 호출 — 키 검증·모델 alias 해석·Prompt Caching 후 IRSA로 InvokeModel' },
+        { from: 'bedrock', to: 'gateway', note: '응답 — Claude 추론 결과가 Gateway로 반환' },
+        { from: 'gateway', to: 'langfuse', note: '관측 — success_callback으로 프롬프트/응답/토큰/userId를 Langfuse에 비동기 전송' },
+        { from: 'langfuse', to: 'clickhouse', note: '저장 — trace를 ClickHouse에 적재 → Users/Tracing 대시보드로 조회' },
+      ] },
+    { id: 'f_consumers', label: '② 요청자 3종',
+      desc: 'Backend·Agent·Coding CLI가 모두 같은 Gateway를 공유한다. 어느 경로든 하나의 관측·과금 지점으로 수렴.',
+      nodes: ['backend', 'agent', 'cli', 'gateway'],
+      steps: [
+        { from: 'backend', to: 'gateway', note: 'backend 사용자 대면 챗' },
+        { from: 'agent', to: 'gateway', note: 'devops/finops/secops agent' },
+        { from: 'cli', to: 'gateway', note: '개발자 코딩 CLI' },
+      ] },
+  ],
+};
+---
+
+<Base title="LLM Gateway + Observability (인터랙티브)" description="LiteLLM 단일 관문 + Langfuse 관측 — 모든 LLM 호출의 제어와 기록을 한 곳에서">
+  <link rel="stylesheet" href="/arch/arch.css" />
+  <style is:global>
+    :root {
+      --background: 0 0% 100%; --foreground: 240 10% 4%; --card: 0 0% 100%; --popover: 0 0% 100%;
+      --muted: 240 5% 96%; --muted-foreground: 240 4% 46%; --border: 240 6% 90%; --accent: 240 5% 96%;
+      --primary: 240 6% 13%; --primary-foreground: 0 0% 100%; --secondary: 240 5% 95%; --secondary-foreground: 240 6% 28%;
+      --radius: 0.6rem; --arch-flow: 221 83% 53%;
+      --arch-person: 222 14% 46%; --arch-service: 235 60% 56%; --arch-ai: 174 62% 38%; --arch-security: 352 68% 52%;
+      --arch-data: 275 52% 56%; --arch-network: 202 85% 46%; --arch-aws: 28 85% 52%; --arch-external: 38 92% 50%;
+    }
+    body:has(.arch) .content main { max-width: 1180px; }
+    .role-legend { display: flex; gap: .45rem 1rem; flex-wrap: wrap; margin: .2rem 0 1.2rem; font-size: .78rem; color: hsl(var(--muted-foreground)); }
+    .role-legend span { display: inline-flex; align-items: center; gap: .34rem; }
+    .role-legend i { width: 11px; height: 11px; border-radius: 3px; }
+  </style>
+
+  <article class="prose">
+    <a class="back" href="/architecture">← Architecture</a>
+    <h1>LLM Gateway + Observability (인터랙티브)</h1>
+    <p class="summary">모든 LLM 호출이 LiteLLM Gateway를 지나 AWS Bedrock으로 가고, 동시에 Langfuse에 자동 기록되는 흐름. 플로우 버튼으로 요청 한 건의 생애주기를 단계별 재생할 수 있습니다.</p>
+
+    <p>핵심은 <strong>모든 LLM 호출이 하나의 Gateway로 수렴</strong>하고, 그 Gateway가 <em>실행(제어)</em>과 <em>관측(기록)</em>을 동시에 담당한다는 점입니다. LiteLLM이 관제탑(누가·얼마나·어떤 모델로 쓰는가)이라면, Langfuse는 블랙박스(그 호출이 무엇을 주고받았는가)입니다. 계층이 다르기에 상호보완적이고, Gateway가 모든 호출의 길목이라 <code>success_callback</code> 설정만으로 <strong>앱 코드 수정 없이</strong> 전 트래픽이 기록됩니다.</p>
+
+    <div class="role-legend">
+      <span><i style="background:hsl(222 14% 46%)"></i>요청자(사용자·서비스)</span>
+      <span><i style="background:hsl(174 62% 38%)"></i>Agent</span>
+      <span><i style="background:hsl(202 85% 46%)"></i>Gateway</span>
+      <span><i style="background:hsl(28 85% 52%)"></i>AWS Bedrock</span>
+      <span><i style="background:hsl(235 60% 56%)"></i>Langfuse</span>
+      <span><i style="background:hsl(275 52% 56%)"></i>저장소</span>
+    </div>
+
+    <div class="arch" data-wide><script type="application/json" is:inline set:html={JSON.stringify(gateway)}></script></div>
+
+    <h2>설계 포인트</h2>
+    <ul>
+      <li><strong>단일 관문 수렴</strong> — Backend·Agent Runtime·개발자 CLI가 모두 virtual key로 같은 Gateway를 사용. 사용량 집계·예산·rate limit·관측이 한 곳에서 이뤄집니다.</li>
+      <li><strong>Floating 모델 alias</strong> — 앱은 <code>claude-sonnet</code> 같은 계열명만 사용하고, 실제 버전 매핑은 Gateway values에서 관리. 모델 교체 시 앱 재배포가 필요 없습니다.</li>
+      <li><strong>Gateway 레벨 Prompt Caching</strong> — system 메시지에 cache_control을 자동 주입. 실측 기준 입력 토큰의 88%가 캐시 적용(캐시 구간 요금 90% 절감), 역시 앱 수정 없음.</li>
+      <li><strong>사용자 단위 trace</strong> — 요청의 <code>user</code> 파라미터를 Langfuse userId로 매핑해 로그인 사용자별 사용량·비용을 대시보드에서 집계.</li>
+      <li><strong>폐쇄망 대응</strong> — 이미지 중앙 ECR 미러링, Gateway→Langfuse는 in-cluster DNS 직결(egress 불필요), Bedrock은 IRSA로 API 키 없이 인증.</li>
+    </ul>
+  </article>
+
+  <script is:inline src="/arch/arch.js"></script>
+</Base>

@@ -1,12 +1,12 @@
 // 사이트 전역 설정. 직접적인 개인정보(실명/연락처/주소/학교명)는 넣지 않습니다.
 export const SITE = {
-  title: 'DevOps · AI Platform Engineer',
-  role: 'DevOps · Platform · AI Platform Engineer',
+  title: 'AI Platform · DevOps Engineer',
+  role: 'AI Platform · DevOps · Platform Engineer',
   tagline: '문제가 터지기 전에 구조를 설계하고 개선하는 플랫폼 엔지니어',
   about:
-    '약 5년간 게임 서비스부터 엔터프라이즈 데이터 플랫폼까지 AWS 클라우드 인프라를 설계·구축·운영해왔습니다. Terraform/Terragrunt IaC와 EKS·ArgoCD GitOps로 멀티 계정·리전 인프라를 표준화했고, 최근에는 AWS Bedrock AgentCore 기반 AI Agent와 전사 AIOps 플랫폼을 직접 설계·개발하고 있습니다.',
+    '약 6년간 게임 서비스부터 엔터프라이즈 데이터 플랫폼까지 AWS 클라우드 인프라를 설계·구축·운영해왔습니다. Terraform/Terragrunt IaC와 EKS·ArgoCD GitOps로 멀티 계정·리전 인프라를 표준화했고, 현재는 그 위에 AWS Bedrock AgentCore 기반 멀티 AI Agent AIOps 플랫폼을 설계부터 프로덕션 배포까지 직접 개발하며, LiteLLM·Langfuse 기반 LLM Gateway·관측 계층으로 운영 체계를 갖추고 있습니다.',
   description:
-    '5년차 DevOps · AI Platform Engineer의 프로젝트와 아키텍처 아카이브. Kubernetes(EKS), Terraform, ArgoCD GitOps, AWS, FinOps, AIOps/LLM.',
+    '6년차 AI Platform · DevOps Engineer의 프로젝트와 아키텍처 아카이브. AWS Bedrock AgentCore, LLM Gateway(LiteLLM·Langfuse), Kubernetes(EKS), Terraform, ArgoCD GitOps, FinOps.',
   // 공개해도 되는 링크만 선택적으로 채우세요. 비우면 표시되지 않습니다.
   links: {
     github: 'https://github.com/kyeongju',
@@ -32,8 +32,8 @@ export const EXPERIENCE: { org: string; period: string; role: string; desc: stri
   {
     org: '교보 디플래닉스',
     period: '2024.06 – 재직 중',
-    role: 'DevOps · Platform Engineer',
-    desc: '그룹 데이터 통합 포털의 ~16개 AWS 계정 인프라를 Terragrunt/GitOps로 표준화하고, Bedrock AgentCore 기반 전사 AIOps 플랫폼을 직접 설계·개발.',
+    role: 'AI Platform · DevOps Engineer',
+    desc: '그룹 데이터 통합 포털의 ~16개 AWS 계정 인프라를 Terragrunt/GitOps로 표준화하고, Bedrock AgentCore 기반 전사 AIOps 플랫폼을 직접 설계·개발. LiteLLM·Langfuse 기반 LLM Gateway·관측 계층 구축.',
   },
   {
     org: '라인게임즈',
@@ -54,7 +54,7 @@ export const SKILLS: { group: string; level: 'expert' | 'proficient'; items: str
   { group: 'Container · Orchestration', level: 'expert', items: ['Kubernetes (EKS)', 'Docker', 'Helm', 'Kustomize', 'Karpenter', 'HPA'] },
   { group: 'CI/CD · GitOps', level: 'expert', items: ['ArgoCD', 'GitLab CI', 'Jenkins'] },
   { group: 'Cloud (AWS)', level: 'expert', items: ['EKS', 'Bedrock', 'AgentCore', 'Control Tower', 'Athena', 'Glue', 'KMS', 'DynamoDB'] },
-  { group: 'AI · AIOps', level: 'proficient', items: ['Bedrock (Claude)', 'AgentCore', 'LangGraph', 'LangChain', 'MCP', 'Slack Bolt'] },
+  { group: 'AI · AIOps', level: 'proficient', items: ['Bedrock (Claude)', 'AgentCore', 'LangGraph', 'LangChain', 'LiteLLM', 'Langfuse', 'MCP', 'Slack Bolt'] },
   { group: 'Observability', level: 'proficient', items: ['Prometheus', 'Thanos', 'Grafana', 'Loki', 'OpenSearch'] },
   { group: 'FinOps', level: 'proficient', items: ['Kubecost', 'Karpenter', 'Cost Explorer'] },
   { group: 'Backend · Frontend', level: 'proficient', items: ['Python', 'FastAPI', 'Flutter', 'MySQL'] },
@@ -68,6 +68,12 @@ export const ARCHITECTURES: { href: string; title: string; summary: string; tags
     title: 'AgentCore 멀티 에이전트',
     summary: 'Bedrock AgentCore 계층형 에이전트 — 오케스트레이션과 서브에이전트 구성을 인터랙티브 다이어그램으로.',
     tags: ['Bedrock AgentCore', 'Multi-Agent', 'A2A · AGUI'],
+  },
+  {
+    href: '/architecture/llm-gateway',
+    title: 'LLM Gateway + Observability',
+    summary: '모든 LLM 호출을 LiteLLM 단일 관문으로 수렴하고 Langfuse로 자동 trace — 제어와 관측을 한 곳에서.',
+    tags: ['LiteLLM', 'Langfuse', 'LLMOps'],
   },
   {
     href: '/architecture/terragrunt',
