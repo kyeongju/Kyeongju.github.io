@@ -19,13 +19,13 @@ const gateway = {
     { id: 'bedrock', label: 'AWS Bedrock', sub: 'Claude (IRSA)', type: 'aws', icon: 'sparkles', layer: 2, col: 1.5,
       desc: '기능: 실제 LLM 추론(Claude sonnet/haiku/opus).\n호출: Gateway가 IRSA로 InvokeModel — API 키 없이 IAM 역할 인증.\n산출: LLM 응답 → Gateway로 반환.' },
     { id: 'langfuse', label: 'Langfuse', sub: 'web + worker', type: 'service', icon: 'chart', layer: 3, col: 1.5, group: 'g_obs',
-      desc: '기능: LLM Observability. 프롬프트/응답/토큰/지연/사용자(userId)를 trace로 수집.\n수신: Gateway의 success_callback (in-cluster 주소, egress 불필요).\n산출: Tracing/Users 대시보드, 사용자·모델별 사용량·비용.' },
-    { id: 'clickhouse', label: 'ClickHouse', sub: 'trace 저장', type: 'data', icon: 'db', layer: 4, col: 0.4, group: 'g_obs',
-      desc: '기능: trace/observation/score 대용량 timeseries 저장소.\n주의: OSS는 자동 retention 없음 → TTL로 관리.' },
-    { id: 'postgres', label: 'PostgreSQL', sub: '메타데이터', type: 'data', icon: 'db', layer: 4, col: 1.5, group: 'g_obs',
-      desc: '기능: org/project/user/API 키 등 메타데이터 저장.' },
-    { id: 'minio', label: 'MinIO (S3)', sub: 'large payload', type: 'data', icon: 'bucket', layer: 4, col: 2.6, group: 'g_obs',
-      desc: '기능: 큰 프롬프트/응답 본문(large payload) 객체 저장.' },
+      desc: '기능: LLM Observability. 프롬프트/응답/토큰/지연/사용자(userId)를 trace로 수집.\n수신: Gateway의 success_callback (in-cluster 주소, egress 불필요).\n산출: Tracing/Users 대시보드, 사용자·모델별 사용량·비용.\n구성: 캐시·큐는 ElastiCache(Valkey) 사용.' },
+    { id: 'clickhouse', label: 'ClickHouse', sub: 'trace 저장 · in-cluster', type: 'data', icon: 'db', layer: 4, col: 0.4, group: 'g_obs',
+      desc: '기능: trace/observation/score 대용량 timeseries 저장소.\n구성: in-cluster 유지 (AWS 매니지드 부재).\n주의: OSS는 자동 retention 없음 → TTL로 관리.' },
+    { id: 'postgres', label: 'RDS (PostgreSQL)', sub: '메타데이터', type: 'aws', icon: 'db', layer: 4, col: 1.5, group: 'g_obs',
+      desc: '기능: org/project/user/API 키 등 메타데이터 저장.\n구성: AWS RDS 매니지드 — 백업·패치·가용성 위임.' },
+    { id: 'minio', label: 'S3', sub: 'large payload', type: 'aws', icon: 'bucket', layer: 4, col: 2.6, group: 'g_obs',
+      desc: '기능: 큰 프롬프트/응답 본문(large payload) 객체 저장.\n구성: AWS S3 — lifecycle 정책으로 retention 관리.' },
   ],
   edges: [
     { from: 'backend', to: 'gateway', label: 'LLM 호출 (vkey+user)', kind: 'sync', desc: 'ChatOpenAI → /v1/chat/completions. user 파라미터로 최종 사용자 전달.' },
@@ -102,6 +102,7 @@ const gateway = {
       <li><strong>Gateway 레벨 Prompt Caching</strong> — system 메시지에 cache_control을 자동 주입. 실측 기준 입력 토큰의 88%가 캐시 적용(캐시 구간 요금 90% 절감), 역시 앱 수정 없음.</li>
       <li><strong>사용자 단위 trace</strong> — 요청의 <code>user</code> 파라미터를 Langfuse userId로 매핑해 로그인 사용자별 사용량·비용을 대시보드에서 집계.</li>
       <li><strong>폐쇄망 대응</strong> — 이미지 중앙 ECR 미러링, Gateway→Langfuse는 in-cluster DNS 직결(egress 불필요), Bedrock은 IRSA로 API 키 없이 인증.</li>
+      <li><strong>상태 저장소는 매니지드로</strong> — 검증 단계는 in-cluster self-host로 빠르게 시작하고, 운영 단계에서 Postgres→RDS, MinIO→S3, 캐시→ElastiCache로 이관해 백업·패치·내구성을 위임. ClickHouse만 in-cluster 유지(매니지드 부재) — 도입 속도와 운영 부담의 단계적 트레이드오프.</li>
     </ul>
   </article>
 
