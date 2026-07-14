@@ -7,7 +7,7 @@ role: DevOps Engineer
 stack: [AWS, Terraform, Terragrunt, EC2, "Auto Scaling", ALB, NLB, Route53, CloudFront, "VPC Peering", "NAT Gateway", Aurora, RDS, Redis, OpenSearch, Logstash, Grafana, PMM, Zabbix, Sentry]
 metrics:
   - 로그 파이프라인 고도화로 장애 대응 시간 30% 단축
-  - DataStream 전환으로 로그 수집 속도 50% 향상
+  - 런칭 피크 일 300GB 로그를 DataStream + ISM 자동 롤오버로 전환 — 수집 속도 50% 향상
   - Logstash 최적화로 처리 속도 30% 개선
 before: "단일 리전·분산 로그로 글로벌 확장·장애 분석 지연"
 after: "멀티리전 + 실시간 로그 파이프라인 (대응 30%↓, 수집 50%↑)"
@@ -47,7 +47,7 @@ flowchart TB
 - **글로벌 아키텍처** — Route53 DNS 진입 → ALB/NLB → EC2 Auto Scaling 게임 서버 → Aurora·Redis 데이터 계층, VPC(NAT/IGW·다중 서브넷·SG)까지 고가용성 설계. 국내 런칭 후 도쿄·싱가포르·버지니아 멀티리전 확장
 - **VPC Peering 메시** — Tokyo의 **Manage 허브**가 모든 리전·QA(서울)와 Peering하고 Tokyo↔Singapore·Virginia를 추가 연결해 글로벌 사설 통신 확보
 - **IaC 표준화** — Terraform + Terragrunt로 `region.hcl`/`env.hcl` + `_envcommon` 계층화, VPC·ALB·ASG·RDS(Aurora)·Redis·CloudFront 모듈을 리전 변수만 바꿔 재사용
-- **실시간 로그 파이프라인** — OpenSearch + Filebeat + Logstash, DataStream 전환, Logstash 최적화, 인덱스 튜닝(40~50GB)
+- **실시간 로그 파이프라인** — OpenSearch + Filebeat + Logstash, 런칭 피크 일 300GB 처리. DataStream 전환 + ISM 정책 자동 롤오버, Logstash 최적화, 인덱스 튜닝(40~50GB)
 - **배포·모니터링** — GitLab CI/Jenkins, CloudFront+S3 클라이언트 패치 + 메신저 알림, PMM/Zabbix/Grafana/Sentry 다층 모니터링
 
 ## 성과
