@@ -41,7 +41,7 @@ flowchart TB
 - **Kubernetes 플랫폼** — 역할 분리 NodeGroup(controller/app/monitoring), Karpenter NodePool, Helm 통합 차트, HPA/PDB/NetworkPolicy
 - **접근 제어** — Control Tower + IAM Identity Center + Azure AD, Cross-account 역할 분리(읽기전용/읽기쓰기), `local_plan` 안전 운영, KMS 전사 암호화
 - **재사용 CI/CD** — 브랜치명 기반 환경 자동 감지(feature→dev / release→sdx / main→prd), 폐쇄망 Helm 반입 자동화, ArgoCD 자동 롤백
-- **통합 관측** — Thanos(Query/Store/Compactor/QF) 중앙 집중, KMS 암호화 S3 장기 보관, 단일 Grafana 뷰, Vector/Loki 로그
+- **관측성 표준 + 통합 관측** — 로그 수집·포맷, 메트릭 네이밍, 대시보드·경보 심각도 기준, 태깅 규칙을 조직 공통 표준으로 정의. Thanos(Query/Store/Compactor/QF) 중앙 집중, KMS 암호화 S3 장기 보관, 단일 Grafana 뷰, Vector/Loki 로그
 
 ## 성과
 
